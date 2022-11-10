@@ -4,27 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDto {
+
+	private Long clientId;
 	private String DNI;
 	private String area;
 	private String name;
 	private String firstSurname;
 	private String lastSurname;
-	private String fullName;
-	private List<CopyDto> copies;
-	private boolean newRecord;
+	//Ni se de que van esas dos lineas, good luck integrando
+	//private List<CopyDto> copies;
+	//private boolean newRecord;
 	
-	public ClientDto(String DNI, String area, String name, String firstSurname, String lastSurname){
+	public ClientDto(Long clientId, String DNI, String area, String name, String firstSurname, String lastSurname){
+		setClientId(clientId);
 		setArea(area);
 		setDNI(DNI);
 		setName(name);
 		setFirstSurname(firstSurname);
 		setLastSurname(lastSurname);
-		setFullName();
-		copies = new ArrayList<CopyDto>();
+		//copies = new ArrayList<CopyDto>();
 	}
 
 	public ClientDto() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Long getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
 	}
 
 	public String getDNI() {
@@ -59,17 +69,9 @@ public class ClientDto {
 		this.lastSurname = lastSurname;
 	}
 
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName() {
-		fullName = getName() + " " + getFirstSurname() + " " + getLastSurname();
-	}
-
-	public List<CopyDto> getCopies() {
+	/*public List<CopyDto> getCopies() {
 		return copies;
-	}
+	}*/
 
 	public String getArea() {
 		return area;
@@ -79,6 +81,7 @@ public class ClientDto {
 		this.area = area;
 	}
 
+	/*
 	public boolean isNewRecord() {
 		return newRecord;
 	}
@@ -86,4 +89,5 @@ public class ClientDto {
 	public void setNewRecord(boolean newRecord) {
 		this.newRecord = newRecord;
 	}
+	*/
 }

@@ -7,9 +7,9 @@ public class SanctionedUserDto extends ClientDto {
 	private Calendar dateStartSanction;
 	private Calendar dateEndSanction;
 	
-	public SanctionedUserDto(String DNI, String area, String name, String firstSurname, String lastSurname, int typeOfSanction, Calendar dateStartSanction,
+	public SanctionedUserDto(Long clientId, String DNI, String area, String name, String firstSurname, String lastSurname, int typeOfSanction, Calendar dateStartSanction,
 			                 Calendar dateEndSanction){
-		super(DNI, area, name, firstSurname, lastSurname);
+		super(clientId, DNI, area, name, firstSurname, lastSurname);
 		setTypeOfSanction(typeOfSanction);
 		setDateStartSanction(dateStartSanction);
 		setDateEndSanction(dateEndSanction);
