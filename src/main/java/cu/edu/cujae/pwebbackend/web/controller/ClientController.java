@@ -68,7 +68,7 @@ public class ClientController {
     @Operation(summary = "Delete a client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "404", description = "Matter not found")
+            @ApiResponse(responseCode = "404", description = "Client not found")
     })
     public ResponseEntity deleteClient(@Parameter(description = "The id of the Client")
                                        @PathVariable("id") Long clientId){
