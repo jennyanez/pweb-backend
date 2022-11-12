@@ -1,6 +1,7 @@
 package cu.edu.cujae.pwebbackend.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "matter")
@@ -12,6 +13,9 @@ public class Matter {
 
     @Column(name = "matter_name")
     private String matterName;
+
+    @OneToMany(mappedBy = "matter")
+    private List<Book> books;
 
     /****** Getters and setters ******/
     public Long getMatterId() {

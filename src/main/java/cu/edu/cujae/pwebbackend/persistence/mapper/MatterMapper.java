@@ -15,6 +15,7 @@ public interface MatterMapper {
             {
                     @org.mapstruct.Mapping(source = "matterId", target = "matterId"),
                     @org.mapstruct.Mapping(source = "matterName", target = "matterName"),
+                  //  @org.mapstruct.Mapping(target = "books", ignore = true),
             }
     )
     Matter toMatter(MatterDto matter);

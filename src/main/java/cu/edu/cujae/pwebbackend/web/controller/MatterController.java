@@ -20,7 +20,7 @@ public class MatterController {
     private MatterService matterService;
 
     @GetMapping("/all")
-    /**todo esto es lo que se muestra en el swagger **/
+    /** esto es lo que se muestra en el swagger **/
     @Operation(summary = "Get all matters")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK")
@@ -57,10 +57,10 @@ public class MatterController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Matter not found")
     })
-    public ResponseEntity updateMatter(@Parameter(description = "The matter that it's going to be updated")
-                                            @RequestBody MatterDto matterDto,
-                                       @Parameter(description = "The id of the Matter")
-                                            @PathVariable("id") Long matterId) {
+    public ResponseEntity<MatterDto> updateMatter(@Parameter(description = "The matter that it's going to be updated")
+                                                      @RequestBody MatterDto matterDto,
+                                                      @Parameter(description = "The id of the Matter")
+                                                      @PathVariable("id") Long matterId) {
         return new ResponseEntity<>(matterService.updateMatter(matterDto, matterId), HttpStatus.OK);
     }
 
@@ -70,11 +70,12 @@ public class MatterController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Matter not found")
     })
-    public ResponseEntity deleteMatter(@Parameter(description = "The id of the Matter")
+    public ResponseEntity<?> deleteMatter(@Parameter(description = "The id of the Matter")
                                            @PathVariable("id") Long matterId){
         if(matterService.deleteMatter(matterId)){
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 }
