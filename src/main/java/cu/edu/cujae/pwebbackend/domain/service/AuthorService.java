@@ -3,6 +3,7 @@ package cu.edu.cujae.pwebbackend.domain.service;
 import cu.edu.cujae.pwebbackend.domain.dto.AuthorDto;
 import cu.edu.cujae.pwebbackend.domain.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +30,13 @@ public class AuthorService {
         return authorRepository.updateAuthor(authorDto, authorId);
     }
 
-    public void deleteAuthor(Long authorId){
-        authorRepository.deleteAuthor(authorId);
+    public boolean deleteAuthor(Long authorId){
+        try{
+            authorRepository.deleteAuthor(authorId);
+            return true;
+        }catch(EmptyResultDataAccessException e){
+            return false;
+        }
+
     }
 }

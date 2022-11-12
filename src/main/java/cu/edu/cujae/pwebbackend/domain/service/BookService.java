@@ -3,6 +3,7 @@ package cu.edu.cujae.pwebbackend.domain.service;
 import cu.edu.cujae.pwebbackend.domain.dto.BookDto;
 import cu.edu.cujae.pwebbackend.domain.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +30,13 @@ public class BookService {
         return bookRepository.updateBook(bookDto, bookId);
     }
 
-    public void deleteBook(Long bookId){
-        bookRepository.deleteBook(bookId);
+    public boolean deleteBook(Long bookId){
+        try{
+            bookRepository.deleteBook(bookId);
+            return true;
+        }catch(EmptyResultDataAccessException e){
+            return false;
+        }
+
     }
 }

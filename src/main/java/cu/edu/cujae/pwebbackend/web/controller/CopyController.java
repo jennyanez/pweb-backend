@@ -37,8 +37,11 @@ public class CopyController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteCopy(@PathVariable("id") Long copyId){
-        copyService.deleteCopy(copyId);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity<?> deleteCopy(@PathVariable("id") Long copyId){
+        if(copyService.deleteCopy(copyId)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
