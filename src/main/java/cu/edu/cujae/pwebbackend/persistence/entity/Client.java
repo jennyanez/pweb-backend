@@ -1,10 +1,7 @@
 package cu.edu.cujae.pwebbackend.persistence.entity;
 
 
-import cu.edu.cujae.pwebbackend.domain.dto.CopyDto;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "client")

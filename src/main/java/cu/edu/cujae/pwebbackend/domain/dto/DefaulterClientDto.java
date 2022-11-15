@@ -1,19 +1,29 @@
 package cu.edu.cujae.pwebbackend.domain.dto;
 
-public class DefaulterUserDto extends ClientDto {
+public class DefaulterClientDto extends ClientDto {
+
+	private Long defaulterClientId;
 	private String bookTitlePossession;
 	private int amountDaysBreach;
 	
-	public DefaulterUserDto(Long clientId, String DNI, String area, String name, String firstSurname, String lastSurname) {
+	public DefaulterClientDto(Long clientId, String DNI, String area, String name, String firstSurname, String lastSurname) {
 		super(clientId, DNI, area, name, firstSurname, lastSurname);
 		// TODO Auto-generated constructor stub
 		setBookTitlePossession(bookTitlePossession);
 		setAmountDaysBreach(amountDaysBreach);
 	}	
 
-	public DefaulterUserDto() {
+	public DefaulterClientDto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Long getDefaulterClientId() {
+		return defaulterClientId;
+	}
+
+	public void setDefaulterClientId(Long defaulterClientId) {
+		this.defaulterClientId = defaulterClientId;
 	}
 
 	public String getBookTitlePossession() {
