@@ -28,10 +28,6 @@ public class Client {
     @Column(name = "client_last_surname")
     private String lastSurname;
 
-    //Yo no se ni porque existe esta parte del codigo, y me esta estorbando
-    //private List<CopyDto> copies;
-    //private boolean newRecord;
-
     public Long getClientId() {
         return clientId;
     }
