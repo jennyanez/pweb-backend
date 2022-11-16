@@ -16,16 +16,16 @@ public class BookDto {
 	private Matter matter;
 	private List<AuthorDto> authors;
 	//private boolean newRecord;
-	private List<CopyDto> copiesList;
+//	private List<CopyDto> copiesList;
 	
-	public BookDto(Long bookId, String code, String title, List<AuthorDto> authors, Matter matter, List<CopyDto> copiesList){
+	public BookDto(Long bookId, String code, String title, List<AuthorDto> authors, Matter matter){
 		setBookId(bookId);
 		setCode(code);
 		setTitle(title);
 		setAuthors(authors);
 		setMatter(matter);
 	//	setNewRecord(newRecord);
-		setCopiesList(copiesList);
+	//	setCopiesList(copiesList);
 	}
 	public BookDto() {
 
@@ -45,13 +45,13 @@ public class BookDto {
 //		this.newRecord = newRecord;
 //	}
 
-	public List<CopyDto> getCopiesList() {
-		return copiesList;
-	}
-
-	public void setCopiesList(List<CopyDto> copiesList) {
-		this.copiesList = copiesList;
-	}
+//	public List<CopyDto> getCopiesList() {
+//		return copiesList;
+//	}
+//
+//	public void setCopiesList(List<CopyDto> copiesList) {
+//		this.copiesList = copiesList;
+//	}
 	
 	public Long getBookId() {
 		return bookId;
