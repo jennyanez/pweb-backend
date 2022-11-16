@@ -1,8 +1,5 @@
 package cu.edu.cujae.pwebbackend.domain.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ClientDto {
 
 	private Long clientId;
@@ -11,9 +8,6 @@ public class ClientDto {
 	private String name;
 	private String firstSurname;
 	private String lastSurname;
-	//Ni se de que van esas dos lineas, good luck integrando
-	//private List<CopyDto> copies;
-	//private boolean newRecord;
 	
 	public ClientDto(Long clientId, String DNI, String area, String name, String firstSurname, String lastSurname){
 		setClientId(clientId);
@@ -69,10 +63,6 @@ public class ClientDto {
 		this.lastSurname = lastSurname;
 	}
 
-	/*public List<CopyDto> getCopies() {
-		return copies;
-	}*/
-
 	public String getArea() {
 		return area;
 	}
@@ -81,13 +71,4 @@ public class ClientDto {
 		this.area = area;
 	}
 
-	/*
-	public boolean isNewRecord() {
-		return newRecord;
-	}
-
-	public void setNewRecord(boolean newRecord) {
-		this.newRecord = newRecord;
-	}
-	*/
 }
