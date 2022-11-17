@@ -78,7 +78,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.7.5</version>
 			</plugin>
-		</plugins>
+        </plugins>
 	</build>
 
 </project>
