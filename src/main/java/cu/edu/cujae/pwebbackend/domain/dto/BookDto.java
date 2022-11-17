@@ -1,7 +1,11 @@
 package cu.edu.cujae.pwebbackend.domain.dto;
 
+import cu.edu.cujae.pwebbackend.persistence.entity.Matter;
+
+import java.util.List;
+
 public class BookDto {
-	private String bookId;
+	private Long bookId;
 	private String code;
 	private String title;
 	private int yearEdition;
@@ -9,51 +13,52 @@ public class BookDto {
 	private String countryOrigin;
 	private String summary;
 	private int amountPages;
-	private String matter;
-	private String authors;
-	private boolean newRecord;
+	private Matter matter;
+	private List<AuthorDto> authors;
+	//private boolean newRecord;
+//	private List<CopyDto> copiesList;
 	
-	public BookDto(String bookId, String title, String authors, String matter, boolean newRecord){
-		setBookId(bookId);
-		setTitle(title);
-		setAuthors(authors);
-		setMatter(matter);
-		setNewRecord(newRecord);
-	}
-	
-	public BookDto(String bookId, String code, String title, String authors, String matter, boolean newRecord){
+	public BookDto(Long bookId, String code, String title, List<AuthorDto> authors, Matter matter){
 		setBookId(bookId);
 		setCode(code);
 		setTitle(title);
 		setAuthors(authors);
 		setMatter(matter);
-		setNewRecord(newRecord);
+	//	setNewRecord(newRecord);
+	//	setCopiesList(copiesList);
 	}
-	
-	/**
-	 * @return the newRecord
-	 */
-	public boolean isNewRecord() {
-		return newRecord;
-	}
+	public BookDto() {
 
-	/**
-	 * @param newRecord the newRecord to set
-	 */
-	public void setNewRecord(boolean newRecord) {
-		this.newRecord = newRecord;
 	}
 	
-	public String getBookId() {
+//	/**
+//	 * @return the newRecord
+//	 */
+//	public boolean isNewRecord() {
+//		return newRecord;
+//	}
+//
+//	/**
+//	 * @param newRecord the newRecord to set
+//	 */
+//	public void setNewRecord(boolean newRecord) {
+//		this.newRecord = newRecord;
+//	}
+
+//	public List<CopyDto> getCopiesList() {
+//		return copiesList;
+//	}
+//
+//	public void setCopiesList(List<CopyDto> copiesList) {
+//		this.copiesList = copiesList;
+//	}
+	
+	public Long getBookId() {
 		return bookId;
 	}
 
-	public void setBookId(String bookId) {
+	public void setBookId(Long bookId) {
 		this.bookId = bookId;
-	}
-
-	public BookDto() {
-		
 	}
 
 	public String getTitle() {
@@ -96,19 +101,19 @@ public class BookDto {
 		this.amountPages = amountPages;
 	}
 
-	public String getMatter() {
+	public Matter getMatter() {
 		return matter;
 	}
 
-	public void setMatter(String matter) {
+	public void setMatter(Matter matter) {
 		this.matter = matter;
 	}
 
-	public String getAuthors() {
+	public List<AuthorDto> getAuthors() {
 		return authors;
 	}
 
-	public void setAuthors(String authors) {
+	public void setAuthors(List<AuthorDto> authors) {
 		this.authors = authors;
 	}
 

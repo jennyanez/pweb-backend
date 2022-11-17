@@ -3,6 +3,7 @@ package cu.edu.cujae.pwebbackend.domain.service;
 import cu.edu.cujae.pwebbackend.domain.dto.MatterDto;
 import cu.edu.cujae.pwebbackend.domain.repository.MatterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,9 +36,12 @@ public class MatterService {
 
     //delete matter
     public boolean deleteMatter(Long matterId){
-        if(matterRepository.deleteMatter(matterId)){
+        try{
+            matterRepository.deleteMatter(matterId);
             return true;
+        } catch(EmptyResultDataAccessException e) {
+            return false;
         }
-        return false;
+
     }
 }

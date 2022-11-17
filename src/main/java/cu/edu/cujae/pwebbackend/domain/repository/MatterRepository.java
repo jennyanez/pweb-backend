@@ -37,7 +37,7 @@ public class MatterRepository{
     }
 
     //Update
-    public MatterDto updateMatter(MatterDto matterDto, long matterId){
+    public MatterDto updateMatter(MatterDto matterDto, Long matterId){
         Matter matter = mapper.toMatter(matterDto);
         matter.setMatterId(matterId);
         Matter matterUpdated = matterCrudRepository.save(matter);
@@ -45,8 +45,7 @@ public class MatterRepository{
     }
 
     //Delete
-    public boolean deleteMatter(Long matterId){
+    public void deleteMatter(Long matterId){
         matterCrudRepository.deleteById(matterId);
-        return true;
     }
 }
