@@ -3,38 +3,30 @@ package cu.edu.cujae.pwebbackend.domain.dto;
 import java.util.List;
 
 public class XUserDto {
-	private String id;
 	private String username;
 	private String fullName;
 	private String password;
 	private String email;
 	private String identification;
 	private boolean newRecord;
-	private List<XRoleDto> roles;
+	private XRoleDto rol;
 	
 	public XUserDto() {
 		super();
 	}
 
-	public XUserDto(String id, String username, String fullName, String password, String email, String identification,
-			List<XRoleDto> roles, boolean newRecord) {
+	public XUserDto(String username, String fullName, String password, String email, String identification,
+			 XRoleDto rol, boolean newRecord) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.fullName = fullName;
 		this.password = password;
 		this.email = email;
 		this.identification = identification;
-		this.roles = roles;
+		this.rol = rol;
 		this.newRecord = newRecord;
 	}
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -65,11 +57,11 @@ public class XUserDto {
 	public void setIdentification(String identification) {
 		this.identification = identification;
 	}
-	public List<XRoleDto> getRoles() {
-		return roles;
+	public XRoleDto getRoles() {
+		return this.rol;
 	}
-	public void setRoles(List<XRoleDto> roles) {
-		this.roles = roles;
+	public void setRoles(XRoleDto rol) {
+		this.rol = rol;
 	}
 
 	public boolean isNewRecord() {
