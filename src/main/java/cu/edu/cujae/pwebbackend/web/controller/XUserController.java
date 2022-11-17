@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/xUserList")
+@RequestMapping("/xusers")
 public class XUserController {
 
     @Autowired

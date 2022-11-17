@@ -13,7 +13,7 @@ public interface XRolMapper {
             {
                     @org.mapstruct.Mapping(source = "id", target = "rolId"),
                     @org.mapstruct.Mapping(source = "description", target = "description"),
-                    //@org.mapstruct.Mapping(target = "xUserList" , ignore = true)
+                    @org.mapstruct.Mapping(target = "xUserList" , ignore = true)
             }
     )
     XRol toXRol(XRoleDto toXRoleDto);

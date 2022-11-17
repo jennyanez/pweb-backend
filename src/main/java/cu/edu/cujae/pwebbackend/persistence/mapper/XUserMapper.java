@@ -16,8 +16,8 @@ public interface XUserMapper {
             {
                     @org.mapstruct.Mapping(source = "username", target = "username"),
                     @org.mapstruct.Mapping(source = "password", target = "password"),
-                    //@org.mapstruct.Mapping(source = "rol", target = "rol"),
-                   // @org.mapstruct.Mapping(source = "rol.id", target = "rolId")
+                    @org.mapstruct.Mapping(source = "rol", target = "rol"),
+                    @org.mapstruct.Mapping(source = "rol.id", target = "rolId")
             }
     )
     XUser toXUser(XUserDto xUserDto);

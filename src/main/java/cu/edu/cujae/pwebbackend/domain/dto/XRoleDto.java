@@ -4,10 +4,14 @@ public class XRoleDto {
 	private Long id;
 	private String description;
 
+
 	public XRoleDto(Long id, String description) {
 		super();
 		this.id = id;
 		this.description = description;
+	}
+
+	public XRoleDto() {
 	}
 
 	public Long getId() {

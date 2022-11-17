@@ -12,14 +12,14 @@ public class XUser {
 
     @Column(name = "xpassword")
     private String password;
-/*
+
     @ManyToOne
-    @JoinColumn(name = "rol")
+    @JoinColumn(name = "rol", insertable = false, updatable=false)
     private XRol rol;
 
     @Column(name = "rol")
     private Long rolId;
-*/
+
 
     /***********************         Getters and Setters        *************************/
 
@@ -37,7 +37,7 @@ public class XUser {
     public void setPassword(String password) {
         this.password = password;
     }
-/*
+
     public XRol getRol() {
         return rol;
     }
@@ -53,5 +53,5 @@ public class XUser {
     public void setRolId(Long rolId) {
         this.rolId = rolId;
     }
- */
+
 }
