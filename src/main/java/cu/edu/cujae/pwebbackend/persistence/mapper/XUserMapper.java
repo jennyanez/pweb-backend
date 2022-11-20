@@ -1,10 +1,10 @@
 package cu.edu.cujae.pwebbackend.persistence.mapper;
 
-import cu.edu.cujae.pwebbackend.domain.dto.XUserDto;
+import cu.edu.cujae.pwebbackend.domain.dto.*;
 import cu.edu.cujae.pwebbackend.persistence.entity.XUser;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 import org.mapstruct.Mappings;
 
 import java.util.List;
@@ -17,7 +17,10 @@ public interface XUserMapper {
                     @org.mapstruct.Mapping(source = "username", target = "username"),
                     @org.mapstruct.Mapping(source = "password", target = "password"),
                     @org.mapstruct.Mapping(source = "rol", target = "rol"),
-                    @org.mapstruct.Mapping(source = "rol.id", target = "rolId")
+                    @org.mapstruct.Mapping(source = "rol.id", target = "rolId"),
+                    @org.mapstruct.Mapping(source = "fullName", target = "fullName"),
+                    @org.mapstruct.Mapping(source = "email", target = "email"),
+                    @org.mapstruct.Mapping(source = "identification", target = "identification")
             }
     )
     XUser toXUser(XUserDto xUserDto);
