@@ -1,7 +1,5 @@
 package cu.edu.cujae.pwebbackend.persistence.entity;
 
-import cu.edu.cujae.pwebbackend.domain.dto.XUserDto;
-
 import javax.persistence.*;
 import java.util.List;
 

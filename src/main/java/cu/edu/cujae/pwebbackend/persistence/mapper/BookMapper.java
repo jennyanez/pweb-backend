@@ -15,14 +15,15 @@ public interface BookMapper {
     @Mappings(
             {
                     @Mapping(source="bookId", target = "bookId"),
-                    @Mapping(source="title", target="bookTitle"),
+                    @Mapping(source="bookTitle", target="bookTitle"),
                     @Mapping(source="yearEdition", target = "yearEdition"),
                     @Mapping(source="editorial", target = "editorial"),
                     @Mapping(source="countryOrigin", target = "countryOrigin"),
                     @Mapping(source = "summary", target = "summary"),
                     @Mapping(source = "amountPages", target = "amountPages"),
-                    @Mapping(source = "code", target = "bookCode"),
+                    @Mapping(source = "bookCode", target = "bookCode"),
                     @Mapping(source = "matter", target = "matter"),
+                    @Mapping(source = "matter.matterId", target = "matter_id"),
                     @Mapping(target = "authors", ignore = true),
                     @Mapping(target = "copies", ignore = true),
             }
