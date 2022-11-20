@@ -1,7 +1,5 @@
 package cu.edu.cujae.pwebbackend.domain.dto;
 
-import cu.edu.cujae.pwebbackend.persistence.entity.Client;
-
 import java.util.Calendar;
 
 public class SanctionedClientDto extends ClientDto {

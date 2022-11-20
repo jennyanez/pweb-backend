@@ -1,57 +1,30 @@
 package cu.edu.cujae.pwebbackend.domain.dto;
 
-import cu.edu.cujae.pwebbackend.persistence.entity.Matter;
-
 import java.util.List;
 
 public class BookDto {
 	private Long bookId;
-	private String code;
-	private String title;
+	private String bookCode;
+	private String bookTitle;
 	private int yearEdition;
 	private String editorial;
 	private String countryOrigin;
 	private String summary;
 	private int amountPages;
-	private Matter matter;
+	private MatterDto matter;
 	private List<AuthorDto> authors;
-	//private boolean newRecord;
-//	private List<CopyDto> copiesList;
+
 	
-	public BookDto(Long bookId, String code, String title, List<AuthorDto> authors, Matter matter){
+	public BookDto(Long bookId, String bookCode, String bookTitle, MatterDto matter, List<AuthorDto> authors){
 		setBookId(bookId);
-		setCode(code);
-		setTitle(title);
+		setBookCode(bookCode);
+		setBookTitle(bookTitle);
 		setAuthors(authors);
 		setMatter(matter);
-	//	setNewRecord(newRecord);
-	//	setCopiesList(copiesList);
 	}
 	public BookDto() {
 
 	}
-	
-//	/**
-//	 * @return the newRecord
-//	 */
-//	public boolean isNewRecord() {
-//		return newRecord;
-//	}
-//
-//	/**
-//	 * @param newRecord the newRecord to set
-//	 */
-//	public void setNewRecord(boolean newRecord) {
-//		this.newRecord = newRecord;
-//	}
-
-//	public List<CopyDto> getCopiesList() {
-//		return copiesList;
-//	}
-//
-//	public void setCopiesList(List<CopyDto> copiesList) {
-//		this.copiesList = copiesList;
-//	}
 	
 	public Long getBookId() {
 		return bookId;
@@ -61,12 +34,12 @@ public class BookDto {
 		this.bookId = bookId;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getBookTitle() {
+		return bookTitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
 	}
 
 	public int getYearEdition() {
@@ -101,11 +74,11 @@ public class BookDto {
 		this.amountPages = amountPages;
 	}
 
-	public Matter getMatter() {
+	public MatterDto getMatter() {
 		return matter;
 	}
 
-	public void setMatter(Matter matter) {
+	public void setMatter(MatterDto matter) {
 		this.matter = matter;
 	}
 
@@ -125,11 +98,11 @@ public class BookDto {
 		this.editorial = editorial;
 	}
 
-	public String getCode() {
-		return code;
+	public String getBookCode() {
+		return bookCode;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setBookCode(String bookCode) {
+		this.bookCode = bookCode;
 	}
 }

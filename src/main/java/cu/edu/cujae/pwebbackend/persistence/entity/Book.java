@@ -26,6 +26,9 @@ public class Book {
     @JoinColumn(name = "matter_id", insertable = false, updatable = false)
     private Matter matter;
 
+    @Column(name = "matter_id")
+    private Long matter_id;
+
     @OneToMany(mappedBy = "author")
     private List<BookAuthor> authors;
 
@@ -121,5 +124,13 @@ public class Book {
 
     public void setAuthors(List<BookAuthor> authors) {
         this.authors = authors;
+    }
+
+    public Long getMatter_id() {
+        return matter_id;
+    }
+
+    public void setMatter_id(Long matter_id) {
+        this.matter_id = matter_id;
     }
 }

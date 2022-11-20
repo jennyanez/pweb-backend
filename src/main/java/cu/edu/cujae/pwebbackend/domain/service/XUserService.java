@@ -2,7 +2,6 @@ package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.XUserDto;
 import cu.edu.cujae.pwebbackend.domain.repository.XUserRepository;
-import cu.edu.cujae.pwebbackend.persistence.entity.XUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

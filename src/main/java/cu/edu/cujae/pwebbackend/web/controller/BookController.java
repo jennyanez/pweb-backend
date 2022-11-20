@@ -1,5 +1,6 @@
 package cu.edu.cujae.pwebbackend.web.controller;
 
+import cu.edu.cujae.pwebbackend.domain.dto.BookAuthorDto;
 import cu.edu.cujae.pwebbackend.domain.dto.BookDto;
 import cu.edu.cujae.pwebbackend.domain.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,9 @@ public class BookController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<BookDto> saveBook(@RequestBody BookDto book){
-        return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);
+    public ResponseEntity<?> saveBook(@RequestBody BookDto book){
+        bookService.saveBook(book);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")

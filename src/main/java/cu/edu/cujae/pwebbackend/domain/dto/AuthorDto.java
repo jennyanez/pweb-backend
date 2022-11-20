@@ -6,14 +6,14 @@ import java.util.List;
 public class AuthorDto {
 	private Long authorId;
 	private String name;
-	private List<BookDto> books;
+//	private List<BookDto> books;
 
 //	public boolean newRecord;
 	
 	public AuthorDto(String name, Long authorId){
 		this.authorId = authorId;
 		setName(name);
-		setBooks(new ArrayList<BookDto>());
+//		setBooks(new ArrayList<BookDto>());
 	}
 
 	public AuthorDto() {
@@ -26,13 +26,13 @@ public class AuthorDto {
 		this.name = name;
 	}
 
-	public List<BookDto> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<BookDto> books) {
-		this.books = books;
-	}
+//	public List<BookDto> getBooks() {
+//		return books;
+//	}
+//
+//	public void setBooks(List<BookDto> books) {
+//		this.books = books;
+//	}
 
 	public Long getAuthorId() {
 		return authorId;

@@ -1,7 +1,5 @@
 package cu.edu.cujae.pwebbackend.domain.dto;
 
-import java.util.List;
-
 public class XUserDto {
 	private String username;
 //	private String fullName;
