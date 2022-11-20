@@ -4,10 +4,9 @@ import cu.edu.cujae.pwebbackend.domain.dto.*;
 import cu.edu.cujae.pwebbackend.persistence.entity.XUser;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-<<<<<<< HEAD
+
 import org.mapstruct.*;
-=======
->>>>>>> 563f1529b8a80fa58abe4e486799f6d6fb68730a
+
 import org.mapstruct.Mappings;
 
 import java.util.List;
