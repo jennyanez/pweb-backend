@@ -1,7 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.XRoleDto;
-import cu.edu.cujae.pwebbackend.domain.repository.XRolRepository;
+import cu.edu.cujae.pwebbackend.domain.service.repository.XRolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

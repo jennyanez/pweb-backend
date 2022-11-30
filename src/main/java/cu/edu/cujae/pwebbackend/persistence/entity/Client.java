@@ -2,6 +2,7 @@ package cu.edu.cujae.pwebbackend.persistence.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -10,7 +11,6 @@ public class Client {
     //Primary Key de la tabla
     @Id
     @Column(name = "client_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clientId;
 
     @Column(name = "client_dni")
@@ -27,6 +27,11 @@ public class Client {
 
     @Column(name = "client_last_surname")
     private String lastSurname;
+
+    @OneToMany(mappedBy = "copy")
+    private List<Loan> copyList;
+
+    /*****************      Getters And Setters      *************************/
 
     public Long getClientId() {
         return clientId;
@@ -74,5 +79,13 @@ public class Client {
 
     public void setLastSurname(String lastSurname) {
         this.lastSurname = lastSurname;
+    }
+
+    public List<Loan> getCopyList() {
+        return copyList;
+    }
+
+    public void setCopyList(List<Loan> copyList) {
+        this.copyList = copyList;
     }
 }

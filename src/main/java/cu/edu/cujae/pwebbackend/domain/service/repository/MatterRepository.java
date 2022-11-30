@@ -1,4 +1,4 @@
-package cu.edu.cujae.pwebbackend.domain.repository;
+package cu.edu.cujae.pwebbackend.domain.service.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.MatterDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.MatterCrudRepository;

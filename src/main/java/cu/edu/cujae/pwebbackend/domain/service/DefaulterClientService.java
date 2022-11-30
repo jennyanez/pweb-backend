@@ -1,7 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.DefaulterClientDto;
-import cu.edu.cujae.pwebbackend.domain.repository.DefaulterClientRepository;
+import cu.edu.cujae.pwebbackend.domain.service.repository.DefaulterClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.CopyDto;
-import cu.edu.cujae.pwebbackend.domain.repository.CopyRepository;
+import cu.edu.cujae.pwebbackend.domain.service.repository.CopyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;

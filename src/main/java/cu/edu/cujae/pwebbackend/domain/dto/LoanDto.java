@@ -3,7 +3,7 @@ package cu.edu.cujae.pwebbackend.domain.dto;
 import java.util.Date;
 
 public class LoanDto {
-	private String id;
+	private Long id;
 	private BookDto book;
 	private CopyDto copy;
 	private ClientDto user;
@@ -11,7 +11,7 @@ public class LoanDto {
 	private Date loanDate;
 	private boolean newRecord;
 	
-	public LoanDto(String loanId, BookDto book, CopyDto copy, ClientDto user, Date returnDate, Date loanDate, boolean newRecord) {
+	public LoanDto(Long loanId, BookDto book, CopyDto copy, ClientDto user, Date returnDate, Date loanDate, boolean newRecord) {
 		super();
 		this.id = loanId;
 		this.book = book;
@@ -26,12 +26,12 @@ public class LoanDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setLoanId(String loanId){
-		this.id = loanId;
+	public Long getId() {
+		return id;
 	}
 
-	public String getLoanId(){
-		return this.id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public BookDto getBook() {
@@ -80,5 +80,5 @@ public class LoanDto {
 
 	public void setNewRecord(boolean newRecord) {
 		this.newRecord = newRecord;
-	}	
+	}
 }

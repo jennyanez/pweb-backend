@@ -1,9 +1,11 @@
-package cu.edu.cujae.pwebbackend.domain.repository;
+package cu.edu.cujae.pwebbackend.domain.service.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.CopyDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.CopyCrudRepository;
+import cu.edu.cujae.pwebbackend.persistence.crud.LoanCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Copy;
 import cu.edu.cujae.pwebbackend.persistence.mapper.CopyMapper;
+import cu.edu.cujae.pwebbackend.persistence.mapper.LoanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,16 @@ public class CopyRepository {
 
     @Autowired
     private CopyMapper mapper;
+
+    @Autowired
+    private LoanMapper loanMapper;
+
+    @Autowired
+    private LoanCrudRepository loanCrudRepository;
+
+
+
+
 
     /**** CRUD methods ****/
     //create

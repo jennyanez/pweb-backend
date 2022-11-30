@@ -1,7 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.SanctionedClientDto;
-import cu.edu.cujae.pwebbackend.domain.repository.SanctionedClientRepository;
+import cu.edu.cujae.pwebbackend.domain.service.repository.SanctionedClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
