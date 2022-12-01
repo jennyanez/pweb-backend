@@ -20,7 +20,7 @@ public interface BookAuthorMapper {
             }
     )
     BookAuthor toBookAuthor(BookAuthorDto bookAuthorDto);
-    List<BookAuthor> toBookAuthorList(List<BookMapper> bookAuthorDtoList);
+    List<BookAuthor> toBookAuthorList(List<BookAuthorDto> bookAuthorDtoList);
 
     @InheritInverseConfiguration
     BookAuthorDto toBookAuthorDto(BookAuthor bookAuthor);
