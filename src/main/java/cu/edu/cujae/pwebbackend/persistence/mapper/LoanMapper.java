@@ -9,12 +9,11 @@ import java.util.List;
 public interface LoanMapper {
     @Mappings(
             {
-                    @Mapping(source="user", target = "client"),
-                    @Mapping(source = "user.clientId", target = "clientId"),
+                    @Mapping(source="id", target = "loanId"),
                     @Mapping(source="copy", target = "copy"),
-                    @Mapping(source = "copy.copyId", target = "copyId"),
-                    //@Mapping(source = "returnDate", target = "returnDate"),
-                    //@Mapping(source = "loanDate", target = "loanDate")
+                    @Mapping(source="client", target = "client"),
+                    @Mapping(source = "returnDate", target = "returnDate"),
+                    @Mapping(source = "loanDate", target = "loanDate")
             }
     )
     Loan toLoan(LoanDto loanDto);

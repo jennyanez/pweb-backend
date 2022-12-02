@@ -2,6 +2,7 @@ package cu.edu.cujae.pwebbackend.persistence.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="copy")
@@ -18,8 +19,8 @@ public class Copy {
     @Column(name = "copy_number")
     private int copyNumber;
 
-    @OneToMany(mappedBy = "client")
-    private List<Loan> clientList;
+    @OneToOne(mappedBy = "copy")
+    private Loan loan;
 
 
     /*******************            Getters And Setters            ***********************/
@@ -48,11 +49,11 @@ public class Copy {
         this.copyNumber = copyNumber;
     }
 
-    public List<Loan> getClientList() {
-        return clientList;
+    public Loan getLoan() {
+        return loan;
     }
 
-    public void setClientList(List<Loan> clientList) {
-        this.clientList = clientList;
+    public void setLoan(Loan loan) {
+        this.loan = loan;
     }
 }

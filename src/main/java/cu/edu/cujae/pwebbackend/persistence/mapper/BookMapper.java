@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {MatterMapper.class})
-public interface BookMapper {
+public interface  BookMapper {
 
     @Mappings(
             {

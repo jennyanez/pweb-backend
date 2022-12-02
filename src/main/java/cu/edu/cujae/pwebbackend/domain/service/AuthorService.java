@@ -1,7 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.AuthorDto;
-import cu.edu.cujae.pwebbackend.domain.service.repository.AuthorRepository;
+import cu.edu.cujae.pwebbackend.domain.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;

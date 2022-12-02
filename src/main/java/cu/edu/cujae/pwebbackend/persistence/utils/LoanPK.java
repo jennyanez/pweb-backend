@@ -6,7 +6,6 @@ import java.util.Objects;
 public class LoanPK implements Serializable {
 
     private Long loanId;
-    private Long bookId;
     private Long clientId;
     private Long copyId;
 
@@ -15,7 +14,6 @@ public class LoanPK implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 59 * hash + Objects.hashCode(this.loanId);
-        hash = 59 * hash + Objects.hashCode(this.bookId);
         hash = 59 * hash + Objects.hashCode(this.clientId);
         hash = 59 * hash + Objects.hashCode(this.copyId);
 
@@ -34,9 +32,6 @@ public class LoanPK implements Serializable {
             return false;
         }
         final LoanPK other = (LoanPK) obj;
-        if (!Objects.equals(this.bookId, other.bookId)) {
-            return false;
-        }
         if (!Objects.equals(this.clientId, other.clientId)) {
             return false;
         }
@@ -57,14 +52,6 @@ public class LoanPK implements Serializable {
 
     public void setLoanId(Long loanId) {
         this.loanId = loanId;
-    }
-
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
     }
 
     public Long getClientId() {

@@ -3,12 +3,12 @@ package cu.edu.cujae.pwebbackend.persistence.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "client")
 public class Client {
 
-    //Primary Key de la tabla
     @Id
     @Column(name = "client_id")
     private Long clientId;
@@ -28,8 +28,8 @@ public class Client {
     @Column(name = "client_last_surname")
     private String lastSurname;
 
-    @OneToMany(mappedBy = "copy")
-    private List<Loan> copyList;
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Loan> loanList;
 
     /*****************      Getters And Setters      *************************/
 
@@ -81,11 +81,11 @@ public class Client {
         this.lastSurname = lastSurname;
     }
 
-    public List<Loan> getCopyList() {
-        return copyList;
+    public List<Loan> getLoanList() {
+        return loanList;
     }
 
-    public void setCopyList(List<Loan> copyList) {
-        this.copyList = copyList;
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
     }
 }

@@ -1,8 +1,12 @@
-package cu.edu.cujae.pwebbackend.domain.service.repository;
+package cu.edu.cujae.pwebbackend.domain.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.LoanDto;
+import cu.edu.cujae.pwebbackend.persistence.crud.ClientCrudRepository;
+import cu.edu.cujae.pwebbackend.persistence.crud.CopyCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.crud.LoanCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Loan;
+import cu.edu.cujae.pwebbackend.persistence.mapper.ClientMapper;
+import cu.edu.cujae.pwebbackend.persistence.mapper.CopyMapper;
 import cu.edu.cujae.pwebbackend.persistence.mapper.LoanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +22,18 @@ public class LoanRepository {
 
     @Autowired
     LoanMapper loanMapper;
+
+    @Autowired
+    ClientCrudRepository clientCrudRepository;
+
+    @Autowired
+    ClientMapper clientMapper;
+
+    @Autowired
+    CopyCrudRepository copyCrudRepository;
+
+    @Autowired
+    CopyMapper copyMapper;
 
     public LoanDto saveLoan(LoanDto loanDto){
         Loan loan = loanMapper.toLoan(loanDto);
