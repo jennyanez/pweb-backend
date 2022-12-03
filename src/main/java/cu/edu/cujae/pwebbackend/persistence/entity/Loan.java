@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "loan")
 public class Loan {
 
-    @Id
+    @EmbeddedId
     @Column(name = "loan_id")
     private Long loanId;
 
@@ -21,6 +21,7 @@ public class Loan {
     @Id
     @Column(name = "client_id")
     private Long clientId;
+
 
     /**********************    Relaciones *************************/
     @OneToOne(cascade = CascadeType.ALL)
