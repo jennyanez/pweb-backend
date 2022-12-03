@@ -3,14 +3,19 @@ package cu.edu.cujae.pwebbackend.persistence.entity;
 import cu.edu.cujae.pwebbackend.persistence.utils.LoanPK;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @IdClass(value = LoanPK.class)
 @Table(name = "loan")
-public class Loan {
+public class Loan implements Serializable {
 
-    @EmbeddedId
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY
+    )
     @Column(name = "loan_id")
     private Long loanId;
 

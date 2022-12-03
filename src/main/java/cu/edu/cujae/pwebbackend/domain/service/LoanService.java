@@ -2,6 +2,7 @@ package cu.edu.cujae.pwebbackend.domain.service;
 
 import cu.edu.cujae.pwebbackend.domain.dto.LoanDto;
 import cu.edu.cujae.pwebbackend.domain.repository.LoanRepository;
+import cu.edu.cujae.pwebbackend.persistence.utils.LoanPK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

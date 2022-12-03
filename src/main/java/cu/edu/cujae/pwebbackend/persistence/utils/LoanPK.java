@@ -11,6 +11,14 @@ public class LoanPK implements Serializable {
     private Long clientId;
     private Long copyId;
 
+    public LoanPK() {
+    }
+
+    public LoanPK(Long loanId, Long clientId, Long copyId) {
+        this.loanId = loanId;
+        this.clientId = clientId;
+        this.copyId = copyId;
+    }
 
     @Override
     public int hashCode() {

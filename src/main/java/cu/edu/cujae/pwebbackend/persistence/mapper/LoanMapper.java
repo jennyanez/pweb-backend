@@ -11,7 +11,9 @@ public interface LoanMapper {
             {
                     @Mapping(source="id", target = "loanId"),
                     @Mapping(source="copy", target = "copy"),
+                    @Mapping(source="copy.copyId", target = "copyId"),
                     @Mapping(source="client", target = "client"),
+                    @Mapping(source="client.clientId", target = "clientId"),
                     @Mapping(source = "returnDate", target = "returnDate"),
                     @Mapping(source = "loanDate", target = "loanDate")
             }

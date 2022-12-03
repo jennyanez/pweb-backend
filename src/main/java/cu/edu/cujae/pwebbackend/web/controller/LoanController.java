@@ -2,6 +2,7 @@ package cu.edu.cujae.pwebbackend.web.controller;
 
 import cu.edu.cujae.pwebbackend.domain.dto.LoanDto;
 import cu.edu.cujae.pwebbackend.domain.service.LoanService;
+import cu.edu.cujae.pwebbackend.persistence.utils.LoanPK;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

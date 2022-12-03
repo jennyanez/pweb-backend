@@ -4,16 +4,14 @@ import java.util.Date;
 
 public class LoanDto {
 	private Long id;
-	private BookDto book;
 	private CopyDto copy;
 	private ClientDto client;
 	private Date returnDate;
 	private Date loanDate;
 	
-	public LoanDto(Long loanId, BookDto book, CopyDto copy, ClientDto client, Date returnDate, Date loanDate) {
+	public LoanDto(Long loanId, CopyDto copy, ClientDto client, Date returnDate, Date loanDate) {
 		super();
 		this.id = loanId;
-		this.book = book;
 		this.copy = copy;
 		this.client = client;
 		this.setReturnDate(returnDate);
@@ -32,14 +30,6 @@ public class LoanDto {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public BookDto getBook() {
-		return book;
-	}
-
-	public void setBook(BookDto book) {
-		this.book = book;
 	}
 
 	public CopyDto getCopy() {
