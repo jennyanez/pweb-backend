@@ -1,8 +1,10 @@
 package cu.edu.cujae.pwebbackend.domain.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.CopyDto;
+import cu.edu.cujae.pwebbackend.persistence.crud.BookCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.crud.CopyCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Copy;
+import cu.edu.cujae.pwebbackend.persistence.mapper.BookMapper;
 import cu.edu.cujae.pwebbackend.persistence.mapper.CopyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,10 +20,17 @@ public class CopyRepository {
     @Autowired
     private CopyMapper mapper;
 
+    @Autowired
+    private BookCrudRepository bookCrudRepository;
+
+    @Autowired
+    private BookMapper bookMapper;
+
     /**** CRUD methods ****/
     //create
     public CopyDto saveCopy(CopyDto copyDto){
         Copy copy = mapper.toCopy(copyDto);
+        copy.setBook(bookMapper.toBook(copyDto.getBook()));
         return mapper.toCopyDto(copyCrudRepository.save(copy));
     }
 
