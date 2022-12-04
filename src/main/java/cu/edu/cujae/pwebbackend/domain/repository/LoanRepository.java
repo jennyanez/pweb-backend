@@ -25,17 +25,6 @@ public class LoanRepository {
     @Autowired
     LoanMapper loanMapper;
 
-    @Autowired
-    ClientCrudRepository clientCrudRepository;
-
-    @Autowired
-    ClientMapper clientMapper;
-
-    @Autowired
-    CopyCrudRepository copyCrudRepository;
-
-    @Autowired
-    CopyMapper copyMapper;
 
     public LoanDto saveLoan(LoanDto loanDto){
         Loan loan = loanMapper.toLoan(loanDto);
@@ -58,23 +47,6 @@ public class LoanRepository {
         List<Loan> loanList = (List<Loan>) loanCrudRepository.findAll();
         return loanMapper.toLoanDtoList(loanList);
     }
-
-    /*public LoanDto updateLoan(LoanDto loanDto,Long loanId){
-
-        LoanPK loanPK = new LoanPK();
-        Loan loanUpdate = new Loan();
-
-        List<Loan> loanList = (List<Loan>) loanCrudRepository.findAll();
-        for(int i = 0;i < loanList.size();i++){
-            if(loanList.get(i).getLoanId()==loanId) {
-                Loan loan = loanMapper.toLoan(loanDto);
-                loan.setLoanId(loanId);
-                loanUpdate = loanCrudRepository.save(loan);
-            }
-        }
-        return loanMapper.toLoanDto(loanUpdate);
-    }
-     */
 
     public LoanDto updateLoan(LoanDto loanDto,Long loanId){
         Loan loan = loanMapper.toLoan(loanDto);

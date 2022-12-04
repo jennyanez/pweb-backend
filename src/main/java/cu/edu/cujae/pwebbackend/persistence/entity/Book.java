@@ -26,6 +26,9 @@ public class Book {
     @JoinColumn(name = "matter_id", insertable = false, updatable = false)
     private Matter matter;
 
+    @OneToOne(mappedBy = "book")
+    private LoanRequest loanRequest;
+
     @Column(name = "matter_id")
     private Long matter_id;
 

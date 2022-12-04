@@ -25,18 +25,11 @@ public class Copy {
     @OneToOne(mappedBy = "copy")
     private Loan loan;
 
+    @OneToOne(mappedBy = "copy")
+    private LoanRequest loanRequest;
+
 
     /*******************            Getters And Setters            ***********************/
-
-    //////GETTERS AND SETTERS
-
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
 
     public Long getCopyId() {
         return copyId;
@@ -54,6 +47,14 @@ public class Copy {
         this.book = book;
     }
 
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
     public int getCopyNumber() {
         return copyNumber;
     }
@@ -68,5 +69,13 @@ public class Copy {
 
     public void setLoan(Loan loan) {
         this.loan = loan;
+    }
+
+    public LoanRequest getLoanRequest() {
+        return loanRequest;
+    }
+
+    public void setLoanRequest(LoanRequest loanRequest) {
+        this.loanRequest = loanRequest;
     }
 }

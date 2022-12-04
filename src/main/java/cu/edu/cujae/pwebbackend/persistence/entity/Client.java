@@ -31,6 +31,10 @@ public class Client {
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Loan> loanList;
 
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<LoanRequest> loanRequestList;
+
+
     /*****************      Getters And Setters      *************************/
 
     public Long getClientId() {
@@ -87,5 +91,13 @@ public class Client {
 
     public void setLoanList(List<Loan> loanList) {
         this.loanList = loanList;
+    }
+
+    public List<LoanRequest> getLoanRequestList() {
+        return loanRequestList;
+    }
+
+    public void setLoanRequestList(List<LoanRequest> loanRequestList) {
+        this.loanRequestList = loanRequestList;
     }
 }
