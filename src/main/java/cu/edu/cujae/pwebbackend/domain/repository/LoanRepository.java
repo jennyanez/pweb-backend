@@ -4,6 +4,7 @@ import cu.edu.cujae.pwebbackend.domain.dto.LoanDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.ClientCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.crud.CopyCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.crud.LoanCrudRepository;
+import cu.edu.cujae.pwebbackend.persistence.entity.Book;
 import cu.edu.cujae.pwebbackend.persistence.entity.Loan;
 import cu.edu.cujae.pwebbackend.persistence.mapper.ClientMapper;
 import cu.edu.cujae.pwebbackend.persistence.mapper.CopyMapper;
@@ -58,7 +59,7 @@ public class LoanRepository {
         return loanMapper.toLoanDtoList(loanList);
     }
 
-    public LoanDto updateLoan(LoanDto loanDto,Long loanId){
+    /*public LoanDto updateLoan(LoanDto loanDto,Long loanId){
 
         LoanPK loanPK = new LoanPK();
         Loan loanUpdate = new Loan();
@@ -73,7 +74,14 @@ public class LoanRepository {
         }
         return loanMapper.toLoanDto(loanUpdate);
     }
+     */
 
+    public LoanDto updateLoan(LoanDto loanDto,Long loanId){
+        Loan loan = loanMapper.toLoan(loanDto);
+        loan.setLoanId(loanId);
+        Loan loanUpdate = loanCrudRepository.save(loan);
+        return loanMapper.toLoanDto(loanUpdate);
+    }
     public boolean deleteLoan(Long loanId){
 
         List<Loan> loanList = (List<Loan>) loanCrudRepository.findAll();

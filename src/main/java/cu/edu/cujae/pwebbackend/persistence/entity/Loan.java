@@ -14,8 +14,6 @@ public class Loan implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY
-    )
     @Column(name = "loan_id")
     private Long loanId;
 
@@ -29,7 +27,7 @@ public class Loan implements Serializable {
 
 
     /**********************    Relaciones *************************/
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "copy_id", insertable = false, updatable = false)
     private Copy copy;
 
