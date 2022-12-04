@@ -17,8 +17,8 @@ public interface CopyMapper {
               @Mapping(source = "copyNumber", target = "copyNumber"),
               @Mapping(source="book", target = "book"),
               @Mapping(target = "loan", ignore = true),
+                    @Mapping(target = "loanRequest", ignore = true),
                     @Mapping(source = "book.bookId", target = "bookId")
-
             }
     )
     Copy toCopy(CopyDto copy);

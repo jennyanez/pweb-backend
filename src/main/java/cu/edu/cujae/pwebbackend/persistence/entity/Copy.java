@@ -31,6 +31,7 @@ public class Copy {
 
     /*******************            Getters And Setters            ***********************/
 
+
     public Long getCopyId() {
         return copyId;
     }
