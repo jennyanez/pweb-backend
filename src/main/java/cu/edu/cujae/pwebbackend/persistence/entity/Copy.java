@@ -1,10 +1,13 @@
 package cu.edu.cujae.pwebbackend.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="copy")
 public class Copy {
+
     @Id
     @Column(name = "copy_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,12 @@ public class Copy {
 
     @Column(name = "copy_number")
     private int copyNumber;
+
+    @OneToOne(mappedBy = "copy")
+    private Loan loan;
+
+
+    /*******************            Getters And Setters            ***********************/
 
 
     //////GETTERS AND SETTERS
@@ -38,7 +47,9 @@ public class Copy {
         this.copyId = copyId;
     }
 
-    public Book getBook() { return book; }
+    public Book getBook() {
+        return book;
+    }
 
     public void setBook(Book book) {
         this.book = book;
@@ -50,5 +61,13 @@ public class Copy {
 
     public void setCopyNumber(int copyNumber) {
         this.copyNumber = copyNumber;
+    }
+
+    public Loan getLoan() {
+        return loan;
+    }
+
+    public void setLoan(Loan loan) {
+        this.loan = loan;
     }
 }

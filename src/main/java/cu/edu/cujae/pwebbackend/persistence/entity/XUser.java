@@ -20,6 +20,15 @@ public class XUser {
     @Column(name = "rol")
     private Long rolId;
 
+    @Column(name = "fullname")
+    private String fullName;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "identification")
+    private String identification;
+
 
     /***********************         Getters and Setters        *************************/
 
@@ -54,4 +63,27 @@ public class XUser {
         this.rolId = rolId;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
 }

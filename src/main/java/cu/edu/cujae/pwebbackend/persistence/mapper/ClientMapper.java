@@ -21,6 +21,7 @@ public interface ClientMapper {
                     @org.mapstruct.Mapping(source = "name", target = "name"),
                     @org.mapstruct.Mapping(source = "firstSurname", target = "firstSurname"),
                     @org.mapstruct.Mapping(source = "lastSurname", target = "lastSurname"),
+                    @org.mapstruct.Mapping(target = "loanList", ignore = true),
             }
     )
     //convertir un dto cliente en una entidad cliente

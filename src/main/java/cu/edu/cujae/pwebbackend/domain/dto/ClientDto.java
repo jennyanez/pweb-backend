@@ -16,7 +16,6 @@ public class ClientDto {
 		setName(name);
 		setFirstSurname(firstSurname);
 		setLastSurname(lastSurname);
-		//copies = new ArrayList<CopyDto>();
 	}
 
 	public ClientDto() {

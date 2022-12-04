@@ -36,14 +36,6 @@ public class XRol {
         this.description = description;
     }
 
-//    public List<XUser> getUserList() {
-//        return xUserList;
-//    }
-//
-//    public void setUserList(List<XUser> xUserList) {
-//        this.xUserList = xUserList;
-//    }
-
     public List<XUser> getxUserList() {
         return xUserList;
     }
@@ -51,6 +43,4 @@ public class XRol {
     public void setxUserList(List<XUser> xUserList) {
         this.xUserList = xUserList;
     }
-
-
 }
