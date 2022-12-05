@@ -2,15 +2,15 @@ package cu.edu.cujae.pwebbackend.persistence.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "client")
 public class Client {
 
-    //Primary Key de la tabla
     @Id
     @Column(name = "client_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clientId;
 
     @Column(name = "client_dni")
@@ -27,6 +27,15 @@ public class Client {
 
     @Column(name = "client_last_surname")
     private String lastSurname;
+
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Loan> loanList;
+
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<LoanRequest> loanRequestList;
+
+
+    /*****************      Getters And Setters      *************************/
 
     public Long getClientId() {
         return clientId;
@@ -74,5 +83,21 @@ public class Client {
 
     public void setLastSurname(String lastSurname) {
         this.lastSurname = lastSurname;
+    }
+
+    public List<Loan> getLoanList() {
+        return loanList;
+    }
+
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
+    }
+
+    public List<LoanRequest> getLoanRequestList() {
+        return loanRequestList;
+    }
+
+    public void setLoanRequestList(List<LoanRequest> loanRequestList) {
+        this.loanRequestList = loanRequestList;
     }
 }
