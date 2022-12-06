@@ -6,7 +6,6 @@ public class XUserDto {
 	private String password;
  	private String email;
 	private String identification;
-	private boolean newRecord;
 	private XRoleDto rol;
 	
 	public XUserDto() {
