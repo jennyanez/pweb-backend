@@ -51,17 +51,14 @@ public class MatterController {
         return new ResponseEntity<>(matterService.saveMatter(matterDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @Operation(summary = "Update a matter")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Matter not found")
     })
-    public ResponseEntity<MatterDto> updateMatter(@Parameter(description = "The matter that it's going to be updated")
-                                                      @RequestBody MatterDto matterDto,
-                                                      @Parameter(description = "The id of the Matter")
-                                                      @PathVariable("id") Long matterId) {
-        return new ResponseEntity<>(matterService.updateMatter(matterDto, matterId), HttpStatus.OK);
+    public ResponseEntity<MatterDto> updateMatter(@RequestBody MatterDto matterDto) {
+        return new ResponseEntity<>(matterService.updateMatter(matterDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

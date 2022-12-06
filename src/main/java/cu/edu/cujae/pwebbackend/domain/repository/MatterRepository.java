@@ -37,7 +37,8 @@ public class MatterRepository{
     }
 
     //Update
-    public MatterDto updateMatter(MatterDto matterDto, Long matterId){
+    public MatterDto updateMatter(MatterDto matterDto){
+        Long matterId = matterDto.getMatterId();
         Matter matter = mapper.toMatter(matterDto);
         matter.setMatterId(matterId);
         Matter matterUpdated = matterCrudRepository.save(matter);

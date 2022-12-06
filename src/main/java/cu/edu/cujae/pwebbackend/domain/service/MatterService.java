@@ -30,8 +30,8 @@ public class MatterService {
     }
 
     //update matter
-    public MatterDto updateMatter(MatterDto matterDto, Long matterId){
-        return matterRepository.updateMatter(matterDto, matterId);
+    public MatterDto updateMatter(MatterDto matterDto){
+        return matterRepository.updateMatter(matterDto);
     }
 
     //delete matter
