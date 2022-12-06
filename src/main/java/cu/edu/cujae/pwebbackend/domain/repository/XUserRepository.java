@@ -33,14 +33,13 @@ public class XUserRepository {
        return mapper.toXUserDtoList(xUserList);
    }
 
-   public XUserDto updateXUSer(XUserDto xUserDto, String username){
+   public XUserDto updateXUser(XUserDto xUserDto){
        XUser xUser = mapper.toXUser(xUserDto);
-       xUser.setUsername(username);
        XUser xUserUpdate = xUserCrudRepository.save(xUser);
        return mapper.toXUserDto(xUserUpdate);
    }
 
-   public void deleteXUSer (String username){
+   public void deleteXUser(String username){
        xUserCrudRepository.deleteById(username);
    }
 }

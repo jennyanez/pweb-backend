@@ -3,6 +3,7 @@ package cu.edu.cujae.pwebbackend.domain.service;
 import cu.edu.cujae.pwebbackend.domain.dto.ClientDto;
 import cu.edu.cujae.pwebbackend.domain.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,16 +31,18 @@ public class ClientService {
     }
 
     //update client
-    public ClientDto updateClient(ClientDto clientDto, Long clientId){
-        return clientRepository.updateClient(clientDto, clientId);
+    public ClientDto updateClient(ClientDto clientDto){
+        return clientRepository.updateClient(clientDto);
     }
 
     //delete client
     public boolean deleteClient(Long clientId){
-        if(clientRepository.deleteClient(clientId)){
+        try{
+            clientRepository.deleteClient(clientId);
             return true;
+        }catch(EmptyResultDataAccessException e){
+            return false;
         }
-        return false;
     }
 
 

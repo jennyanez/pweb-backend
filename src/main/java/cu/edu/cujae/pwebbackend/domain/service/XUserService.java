@@ -26,11 +26,11 @@ public class XUserService {
        return xUserRepository.getAll();
     }
 
-    public XUserDto updateXUSer(XUserDto xUserDto, String username){
-        return xUserRepository.updateXUSer(xUserDto, username);
+    public XUserDto updateXUser(XUserDto xUserDto){
+        return xUserRepository.updateXUser(xUserDto);
     }
 
-    public void deleteXUSer (String username){
-        xUserRepository.deleteXUSer(username);
+    public void deleteXUser(String username){
+        xUserRepository.deleteXUser(username);
     }
 }

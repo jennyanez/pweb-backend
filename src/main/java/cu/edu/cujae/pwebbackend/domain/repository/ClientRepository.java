@@ -38,9 +38,8 @@ public class ClientRepository {
     }
 
     //Update
-    public ClientDto updateClient(ClientDto clientDto, long clientId){
+    public ClientDto updateClient(ClientDto clientDto){
         Client client = mapper.toClient(clientDto);
-        client.setClientId(clientId);
         Client clientUpdated = clientCrudRepository.save(client);
         return mapper.toClientDto(clientUpdated);
     }
