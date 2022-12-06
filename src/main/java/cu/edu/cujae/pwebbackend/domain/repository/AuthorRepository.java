@@ -38,9 +38,9 @@ public class AuthorRepository {
     }
 
     //Update
-    public AuthorDto updateAuthor(AuthorDto authorDto, Long authorId){
+    public AuthorDto updateAuthor(AuthorDto authorDto){
         Author author = mapper.toAuthor(authorDto);
-        author.setAuthorId(authorId);
+        author.setAuthorId(authorDto.getAuthorId());
         Author authorUpdt = authorCrudRepository.save(author);
         return mapper.toAuthorDto(authorUpdt);
     }
