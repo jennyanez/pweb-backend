@@ -80,9 +80,9 @@ public class BookRepository {
     }
 
     //Update
-    public BookDto updateBook(BookDto bookDto, Long bookId){
+    public BookDto updateBook(BookDto bookDto){
         Book book = bookMapper.toBook(bookDto);
-        book.setBookId(bookId);
+       // book.setBookId(bookId);
         Book bookUpd = bookCrudRepository.save(book);
         return bookMapper.toBookDto(bookUpd);
     }

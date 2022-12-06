@@ -1,6 +1,5 @@
 package cu.edu.cujae.pwebbackend.web.controller;
 
-import cu.edu.cujae.pwebbackend.domain.dto.BookAuthorDto;
 import cu.edu.cujae.pwebbackend.domain.dto.BookDto;
 import cu.edu.cujae.pwebbackend.domain.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,9 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<BookDto> updateBook(@RequestBody BookDto book, @PathVariable("id") Long bookId){
-        return new ResponseEntity<>(bookService.updateBook(book, bookId), HttpStatus.OK);
+    @PutMapping("/update")
+    public ResponseEntity<BookDto> updateBook(@RequestBody BookDto book){
+        return new ResponseEntity<>(bookService.updateBook(book), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
