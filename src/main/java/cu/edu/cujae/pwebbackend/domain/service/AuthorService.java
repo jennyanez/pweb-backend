@@ -26,8 +26,8 @@ public class AuthorService {
         return authorRepository.saveAuthor(authorDto);
     }
 
-    public AuthorDto updateAuthor(AuthorDto authorDto, Long authorId){
-        return authorRepository.updateAuthor(authorDto, authorId);
+    public AuthorDto updateAuthor(AuthorDto authorDto){
+        return authorRepository.updateAuthor(authorDto);
     }
 
     public boolean deleteAuthor(Long authorId){
