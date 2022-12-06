@@ -51,17 +51,15 @@ public class XUserController {
         return new ResponseEntity<>(xUserService.getAll(), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @Operation(summary = "Update a user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "User not found")
     })
-    public ResponseEntity updateXUSer(@Parameter(description = "The user that it's going to be updated")
-                                          @RequestBody XUserDto xUserDto,
-                                      @Parameter(description = "The id of the user")
-                                          @PathVariable("id") String username) {
-        return new ResponseEntity<>(xUserService.updateXUSer(xUserDto, username), HttpStatus.OK);
+    public ResponseEntity updateXUSer(@Parameter(description = "The user that is going to be updated")
+                                          @RequestBody XUserDto xUserDto) {
+        return new ResponseEntity<>(xUserService.updateXUser(xUserDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -73,7 +71,7 @@ public class XUserController {
     public ResponseEntity deleteMatter(@Parameter(description = "The id of the User")
                                        @PathVariable("id") String username) {
 
-        xUserService.deleteXUSer(username);
+        xUserService.deleteXUser(username);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

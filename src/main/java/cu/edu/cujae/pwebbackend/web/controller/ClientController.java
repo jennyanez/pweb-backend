@@ -51,17 +51,15 @@ public class ClientController {
         return new ResponseEntity<>(clientService.saveClient(clientDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @Operation(summary = "Update a client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Matter not found")
     })
-    public ResponseEntity updateClient(@Parameter(description = "The client that it's going to be updated")
-                                       @RequestBody ClientDto clientDto,
-                                       @Parameter(description = "The id of the Client")
-                                       @PathVariable("id") Long clientId) {
-        return new ResponseEntity<>(clientService.updateClient(clientDto, clientId), HttpStatus.OK);
+    public ResponseEntity updateClient(@Parameter(description = "The client that is going to be updated")
+                                       @RequestBody ClientDto clientDto) {
+        return new ResponseEntity<>(clientService.updateClient(clientDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
