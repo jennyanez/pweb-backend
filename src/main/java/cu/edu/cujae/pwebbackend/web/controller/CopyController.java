@@ -31,9 +31,9 @@ public class CopyController {
         return new ResponseEntity<>(copyService.saveCopy(copy), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<CopyDto> updateCopy(@RequestBody CopyDto copy, @PathVariable("id") Long copyId){
-        return new ResponseEntity<>(copyService.updateCopy(copy, copyId), HttpStatus.OK);
+    @PutMapping("/update")
+    public ResponseEntity<CopyDto> updateCopy(@RequestBody CopyDto copy){
+        return new ResponseEntity<>(copyService.updateCopy(copy), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

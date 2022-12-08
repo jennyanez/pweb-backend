@@ -22,6 +22,14 @@ public class Book {
     private String summary;
     @Column(name = "amount_pages")
     private int amountPages;
+
+    @Column(name = "matter_id")
+    private Long matter_id;
+
+    @Column(name = "book_code")
+    private String bookCode;
+
+    /**************     Relaciones     ****************/
     @ManyToOne
     @JoinColumn(name = "matter_id", insertable = false, updatable = false)
     private Matter matter;
@@ -29,14 +37,9 @@ public class Book {
     @OneToOne(mappedBy = "book")
     private LoanRequest loanRequest;
 
-    @Column(name = "matter_id")
-    private Long matter_id;
-
     @OneToMany(mappedBy = "author")
     private List<BookAuthor> authors;
 
-    @Column(name = "book_code")
-    private String bookCode;
     @OneToMany(mappedBy = "book")
     private List<Copy> copies;
 

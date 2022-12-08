@@ -26,8 +26,8 @@ public class BookService {
         bookRepository.saveBook(bookDto);
     }
 
-    public BookDto updateBook(BookDto bookDto, Long bookId){
-        return bookRepository.updateBook(bookDto, bookId);
+    public BookDto updateBook(BookDto bookDto){
+        return bookRepository.updateBook(bookDto);
     }
 
     public boolean deleteBook(Long bookId){

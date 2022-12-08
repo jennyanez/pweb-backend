@@ -26,8 +26,8 @@ public class CopyService {
         return copyRepository.saveCopy(copyDto);
     }
 
-    public CopyDto updateCopy(CopyDto copyDto, Long copyId){
-        return copyRepository.updateCopy(copyDto, copyId);
+    public CopyDto updateCopy(CopyDto copyDto){
+        return copyRepository.updateCopy(copyDto);
     }
 
     public boolean deleteCopy(Long copyId){
