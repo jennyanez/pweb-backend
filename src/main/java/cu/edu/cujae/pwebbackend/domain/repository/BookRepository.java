@@ -81,6 +81,7 @@ public class BookRepository {
 
     //Update
     public BookDto updateBook(BookDto bookDto){
+        Long bookId = bookDto.getBookId();
         Book book = bookMapper.toBook(bookDto);
        // book.setBookId(bookId);
         Book bookUpd = bookCrudRepository.save(book);
@@ -89,7 +90,8 @@ public class BookRepository {
 
     //Delete
     public void deleteBook(Long bookId){
+        List<BookAuthor> bookAuthorList = bookAuthorCrudRepository.findByBookId(bookId);
+        bookAuthorCrudRepository.deleteAll(bookAuthorList);
         bookCrudRepository.deleteById(bookId);
-
     }
 }

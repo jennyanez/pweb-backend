@@ -44,7 +44,8 @@ public class CopyRepository {
     }
 
     //update
-    public CopyDto updateCopy(CopyDto copyDto, Long copyId){
+    public CopyDto updateCopy(CopyDto copyDto){
+        Long copyId = copyDto.getCopyId();
         Copy copy = mapper.toCopy(copyDto);
         copy.setCopyId(copyId);
         Copy copyUpd = copyCrudRepository.save(copy);

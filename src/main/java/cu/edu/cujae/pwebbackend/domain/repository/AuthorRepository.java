@@ -2,7 +2,9 @@ package cu.edu.cujae.pwebbackend.domain.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.AuthorDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.AuthorCrudRepository;
+import cu.edu.cujae.pwebbackend.persistence.crud.BookAuthorCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Author;
+import cu.edu.cujae.pwebbackend.persistence.entity.BookAuthor;
 import cu.edu.cujae.pwebbackend.persistence.mapper.AuthorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class AuthorRepository {
     @Autowired
     private AuthorCrudRepository authorCrudRepository;
+
+    @Autowired
+    private BookAuthorCrudRepository bookAuthorCrudRepository;
 
     @Autowired
     private AuthorMapper mapper;
@@ -47,6 +52,8 @@ public class AuthorRepository {
 
     //Delete
     public void deleteAuthor(Long authorId){
+        List<BookAuthor> bookAuthorList = bookAuthorCrudRepository.findByBookId(authorId);
+        bookAuthorCrudRepository.deleteAll(bookAuthorList);
         authorCrudRepository.deleteById(authorId);
     }
 }
