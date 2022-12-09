@@ -90,7 +90,8 @@ public class BookRepository {
 
     //Delete
     public void deleteBook(Long bookId){
+        List<BookAuthor> bookAuthorList = bookAuthorCrudRepository.findByBookId(bookId);
+        bookAuthorCrudRepository.deleteAll(bookAuthorList);
         bookCrudRepository.deleteById(bookId);
-
     }
 }
