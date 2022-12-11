@@ -39,5 +39,9 @@ public class CopyService {
         }
     }
 
+    public List<CopyDto> getByBookId(Long bookId){
+        return copyRepository.getByBookId(bookId);
+    }
+
 
 }
