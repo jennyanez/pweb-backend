@@ -1,6 +1,5 @@
 package cu.edu.cujae.pwebbackend.web.controller;
 
-import cu.edu.cujae.pwebbackend.domain.dto.BookAuthorDto;
 import cu.edu.cujae.pwebbackend.domain.dto.BookDto;
 import cu.edu.cujae.pwebbackend.domain.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

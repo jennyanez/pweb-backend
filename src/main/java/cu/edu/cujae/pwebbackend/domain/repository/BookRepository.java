@@ -83,14 +83,15 @@ public class BookRepository {
     public BookDto updateBook(BookDto bookDto){
         Long bookId = bookDto.getBookId();
         Book book = bookMapper.toBook(bookDto);
-        book.setBookId(bookId);
+       // book.setBookId(bookId);
         Book bookUpd = bookCrudRepository.save(book);
         return bookMapper.toBookDto(bookUpd);
     }
 
     //Delete
     public void deleteBook(Long bookId){
+        List<BookAuthor> bookAuthorList = bookAuthorCrudRepository.findByBookId(bookId);
+        bookAuthorCrudRepository.deleteAll(bookAuthorList);
         bookCrudRepository.deleteById(bookId);
-
     }
 }

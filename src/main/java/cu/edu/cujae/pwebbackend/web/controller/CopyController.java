@@ -44,4 +44,9 @@ public class CopyController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/book/{id}")
+    public ResponseEntity<List<CopyDto>> getByBookId(@PathVariable("id") Long bookId){
+        return new ResponseEntity<>(copyService.getByBookId(bookId), HttpStatus.OK);
+    }
 }

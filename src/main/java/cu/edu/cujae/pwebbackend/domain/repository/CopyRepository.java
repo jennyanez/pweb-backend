@@ -56,4 +56,10 @@ public class CopyRepository {
     public void deleteCopy(Long copyId){
         copyCrudRepository.deleteById(copyId);
     }
+
+    //get copies by book id
+    public List<CopyDto> getByBookId(Long bookId){
+        List<Copy> copies = copyCrudRepository.getByBookId(bookId);
+        return mapper.toCopyDtoList(copies);
+    }
 }
