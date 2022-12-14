@@ -1,15 +1,23 @@
 package cu.edu.cujae.pwebbackend.persistence.utils;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
 public class LoanPK implements Serializable {
 
+    @Id
+    @Column(name = "loan_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanId;
-    private Long clientId;
+
+    @Id
+    @Column(name = "copy_id")
     private Long copyId;
+
+    @Id
+    @Column(name = "client_id")
+    private Long clientId;
 
     public LoanPK() {
     }

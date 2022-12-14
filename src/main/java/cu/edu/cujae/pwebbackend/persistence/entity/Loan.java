@@ -7,23 +7,22 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@IdClass(value = LoanPK.class)
 @Table(name = "loan")
-public class Loan implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Loan {
 
     @Id
     @Column(name = "loan_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanId;
 
-    @Id
+
     @Column(name = "copy_id")
     private Long copyId;
 
-    @Id
+    
     @Column(name = "client_id")
     private Long clientId;
+
 
 
     /**********************    Relaciones *************************/

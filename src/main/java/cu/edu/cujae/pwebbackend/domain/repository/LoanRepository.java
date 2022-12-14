@@ -1,10 +1,12 @@
 package cu.edu.cujae.pwebbackend.domain.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.LoanDto;
+import cu.edu.cujae.pwebbackend.domain.dto.LoanRequestDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.ClientCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.crud.CopyCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.crud.LoanCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Book;
+import cu.edu.cujae.pwebbackend.persistence.entity.Loan;
 import cu.edu.cujae.pwebbackend.persistence.entity.Loan;
 import cu.edu.cujae.pwebbackend.persistence.mapper.ClientMapper;
 import cu.edu.cujae.pwebbackend.persistence.mapper.CopyMapper;
@@ -20,54 +22,36 @@ import java.util.Optional;
 public class LoanRepository {
 
     @Autowired
-    LoanCrudRepository loanCrudRepository;
+    LoanCrudRepository crud;
 
     @Autowired
-    LoanMapper loanMapper;
+    LoanMapper mapper;
 
 
     public LoanDto saveLoan(LoanDto loanDto){
-        Loan loan = loanMapper.toLoan(loanDto);
-        return loanMapper.toLoanDto(loanCrudRepository.save(loan));
+        Loan loan = mapper.toLoan(loanDto);
+        return mapper.toLoanDto(crud.save(loan));
     }
 
-    public Optional<LoanDto> getLoan(Long loanId){
-        List<Loan> loanList = (List<Loan>) loanCrudRepository.findAll();
-        LoanPK loanPK = new LoanPK();
-
-        for(int i = 0;i < loanList.size();i++){
-            if(loanList.get(i).getLoanId()==loanId) {
-                 loanPK = new LoanPK(loanId, loanList.get(i).getClientId(), loanList.get(i).getCopyId());
-            }
-        }
-        return loanCrudRepository.findById(loanPK).map(loan -> loanMapper.toLoanDto(loan));
+    public Optional<LoanDto> getLoan(Long id){
+        return crud.findById(id).map(loan -> mapper.toLoanDto(loan));
     }
 
     public List<LoanDto> getAll(){
-        List<Loan> loanList = (List<Loan>) loanCrudRepository.findAll();
-        return loanMapper.toLoanDtoList(loanList);
+        List<Loan> loanList = (List<Loan>) crud.findAll();
+        return mapper.toLoanDtoList(loanList);
+    }
+    public LoanDto updateLoan (LoanDto loanDto, Long id){
+        Loan loan= mapper.toLoan(loanDto);
+        loan.setLoanId(id);
+        Loan loanUpd = crud.save(loan);
+        return mapper.toLoanDto(loanUpd);
     }
 
-    public LoanDto updateLoan(LoanDto loanDto,Long loanId){
-        Loan loan = loanMapper.toLoan(loanDto);
-        loan.setLoanId(loanId);
-        Loan loanUpdate = loanCrudRepository.save(loan);
-        return loanMapper.toLoanDto(loanUpdate);
-    }
-    public boolean deleteLoan(Long loanId){
-
-        List<Loan> loanList = (List<Loan>) loanCrudRepository.findAll();
-        LoanPK loanPK = new LoanPK();
-
-        for(int i = 0; i < loanList.size(); i++){
-            if(loanList.get(i).getLoanId()==loanId) {
-                loanPK.setLoanId(loanId);
-                loanPK.setClientId(loanList.get(i).getClientId());
-                loanPK.setCopyId(loanList.get(i).getCopyId());
-            }
-        }
-        loanCrudRepository.deleteById(loanPK);
+    public boolean deleteLoan(Long id){
+        crud.deleteById(id);
         return true;
     }
+
 
 }

@@ -11,6 +11,7 @@ public class LoanRequest {
 
     @Id
     @Column(name = "loan_request_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "copy_id")
@@ -22,6 +23,11 @@ public class LoanRequest {
     @Column(name = "book_id")
     private Long bookId;
 
+    @Column(name = "date_request")
+    private Date loanRequestDate;
+
+    /**********************    Relaciones *************************/
+
     @ManyToOne
     @JoinColumn(name = "client_id",insertable = false, updatable = false)
     private Client client;
@@ -29,9 +35,6 @@ public class LoanRequest {
     @OneToOne
     @JoinColumn(name = "copy_id",insertable = false, updatable = false)
     private Copy copy;
-
-    @Column(name = "date_request")
-    private Date loanRequestDate;
 
     @OneToOne
     @JoinColumn(name = "book_id",insertable = false, updatable = false)
