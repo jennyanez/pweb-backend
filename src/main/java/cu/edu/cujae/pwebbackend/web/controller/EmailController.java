@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.*;
 public class EmailController {
 
     @Autowired
-    UserService userServices;
+    private UserService userServices;
+
+    @Autowired
+    private SendEmail sendEmail;
 
     @PostMapping("/{email}")
     public ResponseEntity<String> sendEmail(@PathVariable String email)
             throws Exception {
-        SendEmail sendEmail = new SendEmail();
+        
         int randomPIN = (int) (Math.random() * 90000000) + 1000;
 
         UserDto user = userServices.getUserByEmail(email);
