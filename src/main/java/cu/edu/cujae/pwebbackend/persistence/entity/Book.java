@@ -43,6 +43,9 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Copy> copies;
 
+    @OneToMany(mappedBy = "book")
+    private List<Breach> breaches;
+
     /******* GETTERS AND SETTERS *********/
     public Long getBookId() {
         return bookId;
@@ -138,5 +141,21 @@ public class Book {
 
     public void setMatter_id(Long matter_id) {
         this.matter_id = matter_id;
+    }
+
+    public LoanRequest getLoanRequest() {
+        return loanRequest;
+    }
+
+    public void setLoanRequest(LoanRequest loanRequest) {
+        this.loanRequest = loanRequest;
+    }
+
+    public List<Breach> getBreaches() {
+        return breaches;
+    }
+
+    public void setBreaches(List<Breach> breaches) {
+        this.breaches = breaches;
     }
 }

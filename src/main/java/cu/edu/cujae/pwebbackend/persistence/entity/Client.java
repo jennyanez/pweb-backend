@@ -35,6 +35,12 @@ public class Client {
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<LoanRequest> loanRequestList;
 
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Breach> breachList;
+
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Sanction> sanctionList;
+
 
     /*****************      Getters And Setters      *************************/
 
@@ -100,5 +106,21 @@ public class Client {
 
     public void setLoanRequestList(List<LoanRequest> loanRequestList) {
         this.loanRequestList = loanRequestList;
+    }
+
+    public List<Breach> getBreachList() {
+        return breachList;
+    }
+
+    public void setBreachList(List<Breach> breachList) {
+        this.breachList = breachList;
+    }
+
+    public List<Sanction> getSanctionList() {
+        return sanctionList;
+    }
+
+    public void setSanctionList(List<Sanction> sanctionList) {
+        this.sanctionList = sanctionList;
     }
 }

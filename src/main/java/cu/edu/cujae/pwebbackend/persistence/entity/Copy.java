@@ -28,6 +28,9 @@ public class Copy {
     @OneToOne(mappedBy = "copy")
     private LoanRequest loanRequest;
 
+    @OneToMany(mappedBy = "copy",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Breach> breachList;
+
 
     /*******************            Getters And Setters            ***********************/
 
@@ -78,5 +81,13 @@ public class Copy {
 
     public void setLoanRequest(LoanRequest loanRequest) {
         this.loanRequest = loanRequest;
+    }
+
+    public List<Breach> getBreachList() {
+        return breachList;
+    }
+
+    public void setBreachList(List<Breach> breachList) {
+        this.breachList = breachList;
     }
 }
