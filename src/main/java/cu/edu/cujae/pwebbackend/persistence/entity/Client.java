@@ -38,6 +38,9 @@ public class Client {
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Breach> breachList;
 
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Sanction> sanctionList;
+
 
     /*****************      Getters And Setters      *************************/
 
@@ -111,5 +114,13 @@ public class Client {
 
     public void setBreachList(List<Breach> breachList) {
         this.breachList = breachList;
+    }
+
+    public List<Sanction> getSanctionList() {
+        return sanctionList;
+    }
+
+    public void setSanctionList(List<Sanction> sanctionList) {
+        this.sanctionList = sanctionList;
     }
 }
