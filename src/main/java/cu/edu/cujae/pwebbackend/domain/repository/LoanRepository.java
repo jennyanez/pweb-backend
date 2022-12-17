@@ -41,7 +41,8 @@ public class LoanRepository {
         List<Loan> loanList = (List<Loan>) crud.findAll();
         return mapper.toLoanDtoList(loanList);
     }
-    public LoanDto updateLoan (LoanDto loanDto, Long id){
+    public LoanDto updateLoan (LoanDto loanDto ){
+        Long id = loanDto.getId();
         Loan loan= mapper.toLoan(loanDto);
         loan.setLoanId(id);
         Loan loanUpd = crud.save(loan);

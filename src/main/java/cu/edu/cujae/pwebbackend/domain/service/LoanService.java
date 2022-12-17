@@ -26,8 +26,8 @@ public class LoanService {
         return loanRepository.getAll();
     }
 
-    public LoanDto updateLoan(LoanDto loanDto,Long loanId){
-        return loanRepository.updateLoan(loanDto,loanId);
+    public LoanDto updateLoan(LoanDto loanDto){
+        return loanRepository.updateLoan(loanDto);
     }
 
     public boolean deleteLoan(Long loanId){

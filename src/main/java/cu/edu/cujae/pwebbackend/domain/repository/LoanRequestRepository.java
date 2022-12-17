@@ -32,7 +32,8 @@ public class LoanRequestRepository {
         List<LoanRequest> loanRequestList = (List<LoanRequest>) crud.findAll();
         return mapper.toLoanRequestDtoList(loanRequestList);
     }
-    public LoanRequestDto updateLoanRequest (LoanRequestDto loanRequestDto, Long id){
+    public LoanRequestDto updateLoanRequest (LoanRequestDto loanRequestDto){
+        Long id = loanRequestDto.getId();
         LoanRequest loanRequest = mapper.toLoanRequest(loanRequestDto);
         loanRequest.setId(id);
         LoanRequest loanRequestUpd = crud.save(loanRequest);
