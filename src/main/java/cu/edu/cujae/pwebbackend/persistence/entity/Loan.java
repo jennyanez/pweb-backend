@@ -30,7 +30,7 @@ public class Loan {
     @JoinColumn(name = "copy_id", insertable = false, updatable = false)
     private Copy copy;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
+    @ManyToOne
     @JoinColumn(name = "client_id", insertable = false, updatable = false)
     private Client client;
 
