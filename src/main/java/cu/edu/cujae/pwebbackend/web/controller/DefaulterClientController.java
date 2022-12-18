@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/defaulter_clients")
+@RequestMapping("/api/v1/defaulter_clients")
 public class DefaulterClientController {
 
     @Autowired

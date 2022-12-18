@@ -5,6 +5,7 @@ import cu.edu.cujae.pwebbackend.persistence.crud.UserCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.User;
 import cu.edu.cujae.pwebbackend.persistence.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class UserRepository {
     @Autowired
     private UserCrudRepository userCrudRepository;
 
+
+
     public List<UserDto> getAll() {
         List<User> users = userCrudRepository.findAll();
         return userMapper.toListUserDto(users);
@@ -28,6 +31,7 @@ public class UserRepository {
     }
 
     public void save(UserDto user) {
+        user.setPassword(encodePass(user.getPassword()));
         User userEntity = userMapper.toUser(user);
         userCrudRepository.save(userEntity);
     }
@@ -68,5 +72,9 @@ public class UserRepository {
     public UserDto getUserByEmail(String email) {
         User user = userCrudRepository.findByEmail(email);
         return userMapper.toUserDto(user);
+    }
+
+    private String encodePass(String password) {
+        return new BCryptPasswordEncoder().encode(password);
     }
 }

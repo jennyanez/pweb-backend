@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sanctioned_clients")
+@RequestMapping("/api/v1/sanctioned_clients")
 public class SanctionedClientController {
 
     @Autowired

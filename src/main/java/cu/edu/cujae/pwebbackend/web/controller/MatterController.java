@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/matters")
+@RequestMapping("/api/v1/matters")
 public class MatterController {
     @Autowired
     private MatterService matterService;
