@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/copies")
+@RequestMapping("/api/v1/copies")
 public class CopyController {
     @Autowired
     private CopyService copyService;

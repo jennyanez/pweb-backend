@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loanList")
+@RequestMapping("/api/v1/loanList")
 public class LoanController {
 
     @Autowired
@@ -52,17 +52,15 @@ public class LoanController {
         return new ResponseEntity<>(loanService.saveLoan(loanDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @Operation(summary = "Update a loan")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "loan not found")
     })
     public ResponseEntity updateLoan(@Parameter(description = "The loan that it's going to be updated")
-                                     @RequestBody LoanDto loanDto,
-                                     @Parameter(description = "The id of the loan")
-                                     @PathVariable("id") Long loanId) {
-        return new ResponseEntity<>(loanService.updateLoan(loanDto, loanId), HttpStatus.OK);
+                                     @RequestBody LoanDto loanDto) {
+        return new ResponseEntity<>(loanService.updateLoan(loanDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

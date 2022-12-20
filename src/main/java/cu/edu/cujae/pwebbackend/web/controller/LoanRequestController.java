@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loanRequestList")
+@RequestMapping("/api/v1/loanRequestList")
 public class LoanRequestController {
 
     @Autowired
@@ -33,9 +33,9 @@ public class LoanRequestController {
         return new ResponseEntity<>(service.saveLoanRequest(dto),HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity updateLoanRequest(@RequestBody LoanRequestDto dto,@PathVariable("id") Long id){
-        return new ResponseEntity<>(service.updateLoanRequest(dto,id),HttpStatus.OK);
+    @PutMapping("/update")
+    public ResponseEntity updateLoanRequest(@RequestBody LoanRequestDto dto){
+        return new ResponseEntity<>(service.updateLoanRequest(dto),HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

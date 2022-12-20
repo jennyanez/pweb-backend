@@ -5,6 +5,7 @@ import cu.edu.cujae.pwebbackend.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,35 +14,35 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserDto> getAll() {
+    public List<UserDto> getAll() throws SQLException{
         return userRepository.getAll();
     }
 
-    public UserDto getById(Integer code) {
+    public UserDto getById(Integer code) throws SQLException {
         return userRepository.getById(code);
     }
 
-    public void save(UserDto user) {
+    public void save(UserDto user) throws SQLException{
         userRepository.save(user);
     }
 
-    public void delete(Integer code) {
+    public void delete(Integer code) throws SQLException{
         userRepository.delete(code);
     }
 
-    public UserDto isUser(UserDto user) {
+    public UserDto isUser(UserDto user) throws SQLException{
         return userRepository.exists(user);
     }
 
-    public UserDto login(UserDto user) {
+    public UserDto login(UserDto user) throws SQLException{
         return userRepository.login(user);
     }
 
-    public UserDto findByUsername(String username) {
+    public UserDto findByUsername(String username) throws SQLException{
         return userRepository.findByUsername(username);
     }
 
-    public UserDto getUserByEmail(String email) {
+    public UserDto getUserByEmail(String email) throws SQLException{
         return userRepository.getUserByEmail(email);
     }
 }
