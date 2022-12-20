@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/breaches")
+@RequestMapping("/api/v1/breaches")
 public class BreachController {
     @Autowired
     private BreachService breachService;
