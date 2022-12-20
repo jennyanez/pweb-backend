@@ -71,6 +71,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                     .antMatchers("/api/v1/auth/**")
                         .permitAll()
+                .antMatchers("/api/v1/")
+                .authenticated()
                     .anyRequest()
                         .authenticated();
 
@@ -82,8 +84,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers(HttpMethod.OPTIONS)
-                .antMatchers("/swagger-ui**", "/webjars/**", "/swagger-resources/**", "/v2/api-docs**", "/api/v1/auth**",
-                        "/pweb-backend-library/**","/pweb-backend-library**");
+                .antMatchers("/swagger-ui/**", "/webjars/**", "/swagger-resources/**", "/api-docs/**", "/api/v1/auth/**",
+                        "/pweb-backend-library/**");
     }
 
 }

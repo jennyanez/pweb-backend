@@ -15,7 +15,7 @@ public class UserAuthenticatedDto {
     private String token;
 
     public UserAuthenticatedDto() {
-
+        super();
     }
 
     public UserAuthenticatedDto(int code,
