@@ -1,6 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.ClientDto;
+import cu.edu.cujae.pwebbackend.domain.dto.SanctionDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.ClientCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Client;
 import cu.edu.cujae.pwebbackend.persistence.mapper.ClientMapper;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Repository
@@ -18,6 +20,9 @@ public class ClientRepository {
 
     @Autowired
     private ClientMapper mapper;
+
+    @Autowired
+    private SanctionRepository sanctionRepository;
 
     //** CRUD **//
     //Create
@@ -49,4 +54,16 @@ public class ClientRepository {
         clientCrudRepository.deleteById(clientId);
         return true;
     }
+
+    /// check if is sanctioned
+    public boolean isSanctioned(Long clientId){
+        List<SanctionDto> sanctions = sanctionRepository.getAll();
+        for (SanctionDto sanction : sanctions) {
+            if(Objects.equals(sanction.getClient().getClientId(), clientId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

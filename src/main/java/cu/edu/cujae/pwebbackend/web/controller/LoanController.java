@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -47,9 +49,15 @@ public class LoanController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK")
     })
-    public ResponseEntity<LoanDto> saveLoan(@Parameter(description = "The new loan")
-                                            @RequestBody LoanDto loanDto){
-        return new ResponseEntity<>(loanService.saveLoan(loanDto), HttpStatus.CREATED);
+    public ResponseEntity<String> saveLoan(@Parameter(description = "The new loan")
+                                            @RequestBody LoanDto loanDto) throws SQLException {
+        try {
+            loanService.saveLoan(loanDto);
+            return new ResponseEntity<>("Loan created", HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This loan cannot be saved",HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
     }
 
     @PutMapping("/update")
@@ -58,9 +66,15 @@ public class LoanController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "loan not found")
     })
-    public ResponseEntity updateLoan(@Parameter(description = "The loan that it's going to be updated")
-                                     @RequestBody LoanDto loanDto) {
-        return new ResponseEntity<>(loanService.updateLoan(loanDto), HttpStatus.OK);
+    public ResponseEntity<String> updateLoan(@Parameter(description = "The loan that it's going to be updated")
+                                     @RequestBody LoanDto loanDto) throws SQLException, IOException {
+        try {
+            loanService.updateLoan(loanDto);
+            return new ResponseEntity<>("Loan updated", HttpStatus.OK);
+        }catch(SQLException e){
+            return new ResponseEntity<>("Loan cannot be updated", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @DeleteMapping("/delete/{id}")

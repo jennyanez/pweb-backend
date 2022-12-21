@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -29,13 +31,23 @@ public class LoanRequestController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<LoanRequestDto> saveLoanRequest(@RequestBody LoanRequestDto dto){
-        return new ResponseEntity<>(service.saveLoanRequest(dto),HttpStatus.CREATED);
+    public ResponseEntity<String> saveLoanRequest(@RequestBody LoanRequestDto dto)throws SQLException, IOException {
+        try {
+            service.saveLoanRequest(dto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This loan request already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/update")
-    public ResponseEntity updateLoanRequest(@RequestBody LoanRequestDto dto){
-        return new ResponseEntity<>(service.updateLoanRequest(dto),HttpStatus.OK);
+    public ResponseEntity<String> updateLoanRequest(@RequestBody LoanRequestDto dto) throws SQLException {
+        try {
+            service.updateLoanRequest(dto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This loan request already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/delete/{id}")

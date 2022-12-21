@@ -88,4 +88,9 @@ public class ClientController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/isSanctioned/{id}")
+    public ResponseEntity<Boolean> isSanctioned(@PathVariable("id") Long clientId) throws SQLException, IOException {
+        return new ResponseEntity<>(clientService.isSanctioned(clientId), HttpStatus.OK);
+    }
 }

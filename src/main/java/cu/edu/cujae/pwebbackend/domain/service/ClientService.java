@@ -55,5 +55,10 @@ public class ClientService {
         }
     }
 
+    //check if is sanctioned
+    public boolean isSanctioned(Long clientId){
+        return clientRepository.isSanctioned(clientId);
+    }
+
 
 }
