@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +23,21 @@ public class AuthorService {
         return authorRepository.getAuthor(authorId);
     }
 
-    public AuthorDto saveAuthor(AuthorDto authorDto){
-        return authorRepository.saveAuthor(authorDto);
+    public void saveAuthor(AuthorDto authorDto)throws SQLException{
+        try{
+            authorRepository.saveAuthor(authorDto);
+        }catch (Exception e){
+            throw new SQLException(e);
+        }
+
     }
 
-    public AuthorDto updateAuthor(AuthorDto authorDto){
-        return authorRepository.updateAuthor(authorDto);
+    public void updateAuthor(AuthorDto authorDto) throws SQLException{
+        try{
+            authorRepository.updateAuthor(authorDto);
+        }catch (Exception e){
+            throw new SQLException(e);
+        }
     }
 
     public boolean deleteAuthor(Long authorId){

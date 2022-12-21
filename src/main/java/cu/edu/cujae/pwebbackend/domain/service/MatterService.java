@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,13 +26,21 @@ public class MatterService {
     }
 
     //create matter
-    public MatterDto saveMatter(MatterDto matterDto){
-        return matterRepository.saveMatter(matterDto);
+    public void saveMatter(MatterDto matterDto) throws SQLException {
+        try{
+            matterRepository.saveMatter(matterDto);
+        }catch (Exception e){
+            throw new SQLException("Error al crear la materia");
+        }
     }
 
     //update matter
-    public MatterDto updateMatter(MatterDto matterDto){
-        return matterRepository.updateMatter(matterDto);
+    public void updateMatter(MatterDto matterDto) throws SQLException{
+        try{
+            matterRepository.updateMatter(matterDto);
+        }catch(Exception e){
+            throw new SQLException("Error al actualizar la materia");
+        }
     }
 
     //delete matter

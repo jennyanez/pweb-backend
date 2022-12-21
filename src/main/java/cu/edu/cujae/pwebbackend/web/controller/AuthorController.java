@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -27,13 +29,23 @@ public class AuthorController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<AuthorDto> saveAuthor(@RequestBody AuthorDto author){
-        return new ResponseEntity<>(authorService.saveAuthor(author), HttpStatus.CREATED);
+    public ResponseEntity<String> saveAuthor(@RequestBody AuthorDto author) throws SQLException, IOException {
+        try {
+            authorService.saveAuthor(author);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This author already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/update")
-    public ResponseEntity<AuthorDto> updateAuthor(@RequestBody AuthorDto authorDto){
-        return new ResponseEntity<>(authorService.updateAuthor(authorDto), HttpStatus.OK);
+    public ResponseEntity<String> updateAuthor(@RequestBody AuthorDto authorDto) throws SQLException{
+        try {
+            authorService.updateAuthor(authorDto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This author already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/delete/{id}")
