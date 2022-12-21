@@ -74,20 +74,20 @@ public class UserController {
     }
 
     /// para validar que no exista ese email
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) throws SQLException{
         try {
-            return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);
+            return new ResponseEntity<UserDto>(userService.getUserByEmail(email), HttpStatus.OK);
         }catch (SQLException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     /// para validar que no exista ese username
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public ResponseEntity<UserDto> findByUsername(@PathVariable("username") String username) throws SQLException{
         try {
-            return new ResponseEntity<>(userService.findByUsername(username), HttpStatus.OK);
+            return new ResponseEntity<UserDto>(userService.findByUsername(username), HttpStatus.OK);
         }catch (SQLException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
