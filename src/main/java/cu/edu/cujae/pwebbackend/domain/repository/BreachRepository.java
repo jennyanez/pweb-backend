@@ -1,6 +1,7 @@
 package cu.edu.cujae.pwebbackend.domain.repository;
 
 import cu.edu.cujae.pwebbackend.domain.dto.BreachDto;
+import cu.edu.cujae.pwebbackend.domain.dto.LoanDto;
 import cu.edu.cujae.pwebbackend.persistence.crud.BreachCrudRepository;
 import cu.edu.cujae.pwebbackend.persistence.entity.Breach;
 import cu.edu.cujae.pwebbackend.persistence.mapper.BookMapper;
@@ -10,8 +11,12 @@ import cu.edu.cujae.pwebbackend.persistence.mapper.CopyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Repository
 public class BreachRepository {
@@ -29,6 +34,9 @@ public class BreachRepository {
 
     @Autowired
     private ClientMapper clientMapper;
+
+    @Autowired
+    private LoanRepository loanRepository;
 
 
     /***** CRUD methods ****/
@@ -48,6 +56,7 @@ public class BreachRepository {
     //read all
     public List<BreachDto> getAll(){
         List<Breach> breaches = (List<Breach>) breachCrudRepository.findAll();
+        //insertBreaches();
         return mapper.toBreachDtoList(breaches);
     }
 
@@ -64,5 +73,33 @@ public class BreachRepository {
         breachCrudRepository.deleteById(breachId);
     }
 
+//    //// update breaches
+//    public void insertBreaches(){
+//        List<LoanDto> loans = loanRepository.getAll();
+//        for (LoanDto loan: loans) {
+//            if(loan.getReturnDate().compareTo(Date.valueOf(LocalDate.now())) < 0){
+//                System.out.println(loan.getReturnDate().compareTo(Date.valueOf(LocalDate.now())) < 0);
+//                BreachDto breachDto = new BreachDto();
+//                breachDto.setCopy(loan.getCopy());
+//                breachDto.setClient(loan.getClient());
+//
+//                long diff = Date.valueOf(LocalDate.now()).getTime() - loan.getReturnDate().getTime();
+//
+//                TimeUnit time = TimeUnit.DAYS;
+//                long diffDays = time.convert(diff, TimeUnit.MILLISECONDS);
+//
+//                System.out.println(diffDays);
+//
+//                breachDto.setDays((int) diffDays);
+//
+//                for(BreachDto b: getAll()){
+//                    if(!Objects.equals(b.getCopy().getCopyId(), breachDto.getCopy().getCopyId()) && !Objects.equals(b.getClient().getClientId(), breachDto.getClient().getClientId())){
+//                        saveBreach(breachDto);
+//                    }
+//                }
+//
+//
+//            }
+//        }
 
 }

@@ -54,5 +54,10 @@ public class LoanRepository {
         return true;
     }
 
+    public List<LoanDto> getLoanByClientId(Long clientId){
+        List<Loan> loanList = crud.findByClientId(clientId);
+        return mapper.toLoanDtoList(loanList);
+    }
+
 
 }

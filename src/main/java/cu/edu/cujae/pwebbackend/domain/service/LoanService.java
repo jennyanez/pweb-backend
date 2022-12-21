@@ -30,6 +30,10 @@ public class LoanService {
         return loanRepository.updateLoan(loanDto);
     }
 
+    public List<LoanDto> getLoanByClientId(Long clientId){
+        return loanRepository.getLoanByClientId(clientId);
+    }
+
     public boolean deleteLoan(Long loanId){
         if(loanRepository.deleteLoan(loanId)){
             return true;

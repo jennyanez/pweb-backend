@@ -77,4 +77,15 @@ public class LoanController {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/client/{id}")
+    @Operation(summary = "Get all loans by client ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "404", description = "loan not found")
+    })
+    public ResponseEntity<List<LoanDto>> getLoanByClientId(@Parameter(description = "The id of the client")
+                                                           @PathVariable("id") Long clientId){
+        return new ResponseEntity<>(loanService.getLoanByClientId(clientId), HttpStatus.OK);
+    }
+
 }
