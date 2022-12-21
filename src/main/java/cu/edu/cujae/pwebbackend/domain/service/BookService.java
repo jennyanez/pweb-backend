@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +23,20 @@ public class BookService {
         return bookRepository.getBook(bookId);
     }
 
-    public void saveBook(BookDto bookDto){
-        bookRepository.saveBook(bookDto);
+    public void saveBook(BookDto bookDto) throws SQLException {
+        try {
+            bookRepository.saveBook(bookDto);
+        }catch (Exception e){
+            throw new SQLException(e);
+        }
     }
 
-    public BookDto updateBook(BookDto bookDto){
-        return bookRepository.updateBook(bookDto);
+    public void updateBook(BookDto bookDto) throws SQLException{
+        try{
+            bookRepository.updateBook(bookDto);
+        }catch(Exception e){
+            throw new SQLException(e);
+        }
     }
 
     public boolean deleteBook(Long bookId){

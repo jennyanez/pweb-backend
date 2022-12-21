@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -46,9 +48,14 @@ public class ClientController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK")
     })
-    public ResponseEntity<ClientDto> saveClient(@Parameter(description = "The new client")
-                                                @RequestBody ClientDto clientDto){
-        return new ResponseEntity<>(clientService.saveClient(clientDto), HttpStatus.CREATED);
+    public ResponseEntity<String> saveClient(@Parameter(description = "The new client")
+                                                @RequestBody ClientDto clientDto) throws SQLException, IOException {
+        try{
+            clientService.saveClient(clientDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This client already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/update")
@@ -57,9 +64,15 @@ public class ClientController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Matter not found")
     })
-    public ResponseEntity updateClient(@Parameter(description = "The client that is going to be updated")
-                                       @RequestBody ClientDto clientDto) {
-        return new ResponseEntity<>(clientService.updateClient(clientDto), HttpStatus.OK);
+    public ResponseEntity<String> updateClient(@Parameter(description = "The client that is going to be updated")
+                                       @RequestBody ClientDto clientDto) throws SQLException, IOException {
+        try{
+            clientService.updateClient(clientDto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This client already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @DeleteMapping("/delete/{id}")
@@ -68,11 +81,11 @@ public class ClientController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Client not found")
     })
-    public ResponseEntity deleteClient(@Parameter(description = "The id of the Client")
+    public ResponseEntity<String> deleteClient(@Parameter(description = "The id of the Client")
                                        @PathVariable("id") Long clientId){
         if(clientService.deleteClient(clientId)){
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

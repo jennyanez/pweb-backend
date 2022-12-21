@@ -3,6 +3,7 @@ package cu.edu.cujae.pwebbackend.domain.service;
 import cu.edu.cujae.pwebbackend.domain.dto.UserDto;
 import cu.edu.cujae.pwebbackend.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -26,8 +27,13 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void delete(Integer code) throws SQLException{
-        userRepository.delete(code);
+    public boolean delete(Integer code){
+       try{
+           userRepository.delete(code);
+           return true;
+       }catch (EmptyResultDataAccessException e){
+           return false;
+       }
     }
 
     public UserDto isUser(UserDto user) throws SQLException{

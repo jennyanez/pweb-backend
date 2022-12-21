@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -30,10 +31,18 @@ public class UserRepository {
         return userMapper.toUserDto(userCrudRepository.findByCode(id));
     }
 
-    public void save(UserDto user) {
-        user.setPassword(encodePass(user.getPassword()));
-        User userEntity = userMapper.toUser(user);
-        userCrudRepository.save(userEntity);
+    public void save(UserDto user) throws SQLException {
+        try{
+            if(getUserByEmail(user.getEmail()) == null){
+                if(findByUsername(user.getUsername()) == null){
+                    user.setPassword(encodePass(user.getPassword()));
+                    User userEntity = userMapper.toUser(user);
+                    userCrudRepository.save(userEntity);
+                }
+            }
+        }catch (Exception e){
+            throw new SQLException(e);
+        }
     }
 
     public void delete(Integer code) {

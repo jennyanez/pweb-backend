@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -27,14 +29,24 @@ public class BookController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> saveBook(@RequestBody BookDto book){
-        bookService.saveBook(book);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<String> saveBook(@RequestBody BookDto book) throws SQLException, IOException {
+        try{
+            bookService.saveBook(book);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch(SQLException e){
+            return new ResponseEntity<>("This book already exists", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @PutMapping("/update")
-    public ResponseEntity<BookDto> updateBook(@RequestBody BookDto book){
-        return new ResponseEntity<>(bookService.updateBook(book), HttpStatus.OK);
+    public ResponseEntity<String> updateBook(@RequestBody BookDto book) throws SQLException, IOException{
+        try{
+            bookService.updateBook(book);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch(SQLException e){
+            return new ResponseEntity<>("This book already exists", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/delete/{id}")

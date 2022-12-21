@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -46,9 +48,14 @@ public class MatterController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK")
     })
-    public ResponseEntity<MatterDto> saveMatter(@Parameter(description = "The new matter")
-                                                    @RequestBody MatterDto matterDto){
-        return new ResponseEntity<>(matterService.saveMatter(matterDto), HttpStatus.CREATED);
+    public ResponseEntity<String> saveMatter(@Parameter(description = "The new matter")
+                                                    @RequestBody MatterDto matterDto) throws SQLException, IOException {
+        try{
+            matterService.saveMatter(matterDto);
+            return new ResponseEntity<>("Matter created", HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("Error creating matter", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/update")
@@ -57,8 +64,13 @@ public class MatterController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "404", description = "Matter not found")
     })
-    public ResponseEntity<MatterDto> updateMatter(@RequestBody MatterDto matterDto) {
-        return new ResponseEntity<>(matterService.updateMatter(matterDto), HttpStatus.OK);
+    public ResponseEntity<String> updateMatter(@RequestBody MatterDto matterDto) throws SQLException, IOException {
+        try {
+            matterService.updateMatter(matterDto);
+            return new ResponseEntity<>("Matter updated", HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("Error updating matter", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/delete/{id}")
