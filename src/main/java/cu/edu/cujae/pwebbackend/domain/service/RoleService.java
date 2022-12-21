@@ -5,6 +5,7 @@ import cu.edu.cujae.pwebbackend.domain.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -20,7 +21,7 @@ public class RoleService {
         return roleRepository.getByCode(code);
     }
 
-    public void save(RoleDto role) {
+    public void save(RoleDto role){
         roleRepository.save(role);
     }
 

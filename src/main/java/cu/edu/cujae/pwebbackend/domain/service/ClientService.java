@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,13 +27,22 @@ public class ClientService {
     }
 
     //create client
-    public ClientDto saveClient(ClientDto clientDto){
-        return clientRepository.saveClient(clientDto);
+    public void saveClient(ClientDto clientDto) throws SQLException {
+        try {
+            clientRepository.saveClient(clientDto);
+        } catch (Exception e) {
+            throw new SQLException(e);
+        }
+
     }
 
     //update client
-    public ClientDto updateClient(ClientDto clientDto){
-        return clientRepository.updateClient(clientDto);
+    public void updateClient(ClientDto clientDto) throws SQLException {
+        try {
+            clientRepository.updateClient(clientDto);
+        } catch (Exception e) {
+            throw new SQLException(e);
+        }
     }
 
     //delete client

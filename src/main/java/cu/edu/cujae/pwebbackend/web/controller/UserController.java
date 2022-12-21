@@ -38,22 +38,34 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> create(@RequestBody UserDto user) throws SQLException{
-        userService.save(user);
-        sendMailToUserWithCredentials(user.getFirstName(), user.getEmail());
-        return ResponseEntity.ok("User created");
+    public ResponseEntity<String> create(@RequestBody UserDto user) throws SQLException, IOException{
+        try{
+            userService.save(user);
+            sendMailToUserWithCredentials(user.getFirstName(), user.getEmail());
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This user already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> update(@RequestBody UserDto user) throws SQLException{
-        userService.save(user);
-        return ResponseEntity.ok("User updated");
+    public ResponseEntity<String> update(@RequestBody UserDto user) throws SQLException, IOException{
+        try {
+            userService.save(user);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>("This user already exists",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") int code) throws SQLException{
-        userService.delete(code);
-        return ResponseEntity.ok("User deleted");
+    public ResponseEntity<String> delete(@PathVariable("id") int code) throws SQLException, IOException{
+        try {
+            userService.delete(code);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/isUser")
@@ -61,6 +73,27 @@ public class UserController {
         return new ResponseEntity<UserDto>(userService.isUser(userDto), HttpStatus.OK);
     }
 
+    /// para validar que no exista ese email
+    @GetMapping("/{email}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") String email) throws SQLException{
+        try {
+            return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /// para validar que no exista ese username
+    @GetMapping("/{username}")
+    public ResponseEntity<UserDto> findByUsername(@PathVariable("username") String username) throws SQLException{
+        try {
+            return new ResponseEntity<>(userService.findByUsername(username), HttpStatus.OK);
+        }catch (SQLException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /******* email method ********/
         private void sendMailToUserWithCredentials(String fullName, String email){
         Mail mail=new Mail();
         mail.setMailTo(email);
